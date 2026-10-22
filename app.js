@@ -12,6 +12,7 @@ const STORAGE_KEYS = {
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initDateDefaults();
+  initQuickSearch();
   initCostCalculator();
   initReservationForm();
   initOwnerSettings();
@@ -88,6 +89,56 @@ function initDateDefaults() {
 
     checkOut.addEventListener('change', () => {
       updatePrice();
+    });
+  }
+}
+
+/* ==========================================================================
+   2.1. TÌM PHÒNG NHANH TRÊN BANNER (QUICK SEARCH)
+   ========================================================================== */
+function initQuickSearch() {
+  const qCheckIn = document.getElementById('quickCheckIn');
+  const qCheckOut = document.getElementById('quickCheckOut');
+  const qGuests = document.getElementById('quickGuests');
+  const btnQuickSearch = document.getElementById('btnQuickSearch');
+
+  if (qCheckIn && qCheckOut) {
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    qCheckIn.min = formatDateInput(today);
+    qCheckIn.value = formatDateInput(today);
+    qCheckOut.min = formatDateInput(tomorrow);
+    qCheckOut.value = formatDateInput(tomorrow);
+
+    qCheckIn.addEventListener('change', () => {
+      const nextDay = new Date(qCheckIn.value);
+      nextDay.setDate(nextDay.getDate() + 1);
+      qCheckOut.min = formatDateInput(nextDay);
+      if (new Date(qCheckOut.value) <= new Date(qCheckIn.value)) {
+        qCheckOut.value = formatDateInput(nextDay);
+      }
+    });
+  }
+
+  if (btnQuickSearch) {
+    btnQuickSearch.addEventListener('click', () => {
+      const mainCheckIn = document.getElementById('checkInDate');
+      const mainCheckOut = document.getElementById('checkOutDate');
+      const mainGuests = document.getElementById('guestCount');
+
+      if (qCheckIn && mainCheckIn) mainCheckIn.value = qCheckIn.value;
+      if (qCheckOut && mainCheckOut) mainCheckOut.value = qCheckOut.value;
+      if (qGuests && mainGuests) mainGuests.value = qGuests.value;
+
+      const target = document.getElementById('rooms') || document.getElementById('booking');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (typeof updatePrice === 'function') {
+        updatePrice();
+      }
     });
   }
 }

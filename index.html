@@ -63,10 +63,33 @@
           Bốn gian phòng gỗ mộc nép mình bên triền đồi ngắm trọn thung lũng sương mù. Không gian tĩnh lặng để bạn nghỉ ngơi và tìm lại sự thư thái.
         </p>
 
-        <!-- Nút hành động chính trên mobile & desktop -->
-        <div class="hero-actions">
-          <a href="#rooms" class="btn-primary">Xem 4 Hạng Phòng</a>
-          <a href="#booking" class="btn-secondary">Gửi Yêu Cầu Đặt Phòng</a>
+        <!-- KHUNG KÍNH MỜ CHỌN NGÀY (GLASSMORPHISM BLUR CARD) -->
+        <div class="hero-quick-check">
+          <div class="quick-check-grid">
+            <div class="qc-field">
+              <label><i class="fa-regular fa-calendar"></i> Nhận phòng</label>
+              <input type="date" id="quickCheckIn" class="qc-input">
+            </div>
+            <div class="qc-field">
+              <label><i class="fa-regular fa-calendar-check"></i> Trả phòng</label>
+              <input type="date" id="quickCheckOut" class="qc-input">
+            </div>
+            <div class="qc-field">
+              <label><i class="fa-solid fa-user-group"></i> Số lượng khách</label>
+              <select id="quickGuests" class="qc-input">
+                <option value="2">2 Khách (Phòng đôi)</option>
+                <option value="4">3 - 4 Khách (Gia đình)</option>
+                <option value="6">5 - 6 Khách (Sân vườn)</option>
+                <option value="12">Thuê trọn khu (10-14 khách)</option>
+              </select>
+            </div>
+            <div class="qc-action">
+              <button type="button" id="btnQuickSearch" class="btn-quick-check">
+                <span>Tìm Phòng Trống</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- 3 Điểm nổi bật ngắn gọn -->
@@ -76,6 +99,9 @@
           <div class="hl-item"><i class="fa-solid fa-check"></i> Ô tô đỗ tận cổng</div>
         </div>
       </div>
+
+      <!-- Dải sương mù mờ chuyển tiếp ở chân banner -->
+      <div class="hero-fog-overlay"></div>
     </section>
 
     <!-- 3. GIỚI THIỆU NGẮN GỌN -->

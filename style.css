@@ -335,6 +335,107 @@ button, input, select, textarea {
   color: var(--c-dark);
 }
 
+/* KHUNG KÍNH MỜ CHỌN PHÒNG (FROSTED GLASSMORPHISM CARD) */
+.hero-quick-check {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+  margin: 0 auto 30px;
+  max-width: 840px;
+  text-align: left;
+}
+
+.quick-check-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.15fr 1.35fr 1.35fr;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.qc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qc-field label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qc-field label i {
+  color: var(--c-clay);
+}
+
+.qc-input {
+  width: 100%;
+  padding: 11px 12px;
+  background: #ffffff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--c-dark);
+  transition: all var(--tr-fast);
+}
+
+.qc-input:focus {
+  outline: none;
+  border-color: var(--c-clay);
+  box-shadow: 0 0 0 3px rgba(166, 91, 53, 0.15);
+}
+
+.qc-action {
+  display: flex;
+}
+
+.btn-quick-check {
+  width: 100%;
+  padding: 11px 16px;
+  background: var(--c-clay);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--tr-fast);
+  white-space: nowrap;
+}
+
+.btn-quick-check:hover {
+  background: var(--c-clay-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(166, 91, 53, 0.35);
+}
+
+/* DẢI HÌNH MỜ SƯƠNG MÙ Ở CHÂN HERO BANNER (FOG OVERLAY) */
+.hero-fog-overlay {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 95px;
+  background: linear-gradient(180deg, rgba(252, 251, 248, 0) 0%, rgba(252, 251, 248, 0.6) 45%, var(--c-bg) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
 .hero-highlights {
   display: flex;
   align-items: center;
@@ -1291,6 +1392,21 @@ button, input, select, textarea {
 
   .hero-title {
     margin-bottom: 14px;
+  }
+
+  .hero-quick-check {
+    padding: 14px 12px;
+    margin-bottom: 22px;
+    border-radius: var(--radius-sm);
+  }
+
+  .quick-check-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .btn-quick-check {
+    padding: 12px;
   }
 
   .hero-actions {
