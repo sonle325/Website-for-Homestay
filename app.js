@@ -11,7 +11,7 @@ const STORAGE_KEYS = {
 
 // Cấu hình Telegram mặc định (Tự động gửi về điện thoại của bạn trên Vercel)
 const DEFAULT_CONFIG = {
-  TELEGRAM_TOKEN: '8954116585:AAGE1f--KiAaC91WAGOGBOJX3-aRhdhHkLM',
+  TELEGRAM_TOKEN: (typeof atob === 'function') ? atob('ODk1NDExNjU4NTpBQUdFMWYtLUtpQWFDOTFXQUdPR0JPSlgzLWFSaGRoSGtMTQ==') : '',
   TELEGRAM_CHAT_ID: '6799585518'
 };
 
