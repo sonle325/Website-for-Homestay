@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lal Angle Homestay & Retreat | Đà Lạt</title>
+  
+  <!-- SEO & Social Sharing -->
+  <meta name="description" content="Lal Angle Homestay & Retreat - Ngôi nhà gỗ mộc nép mình bên sườn đồi Khởi Nghĩa Bắc Sơn, Đà Lạt. Bốn gian phòng ngắm trọn thung lũng thông, bồn tắm ngâm thảo mộc và không gian tĩnh tại.">
+  <meta name="keywords" content="Lal Angle Homestay, Homestay Đà Lạt, homestay ngắm thung lũng thông, homestay yên tĩnh Đà Lạt, đặt phòng homestay Đà Lạt">
+  <meta property="og:title" content="Lal Angle Homestay & Retreat | Đà Lạt">
+  <meta property="og:description" content="Một chốn dừng chân bình dị bên đồi thông Đà Lạt. Đặt phòng trực tiếp để nhận ưu đãi ăn sáng và trà chiều.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85">
+  
+  <!-- Google Fonts: Editorial Serif + Minimal Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Ribbon: Thanh thông báo nhẹ nhàng chuẩn khách sạn boutique -->
+  <aside class="top-ribbon" id="topRibbon">
+    <div class="ribbon-inner">
+      <span class="ribbon-note">Trân trọng gửi bạn: Mùa hoa dã quỳ và sương sớm đã về trên đồi Lal Angle.</span>
+      <span class="ribbon-divider">·</span>
+      <span>Hỗ trợ nhận phòng sớm miễn phí nếu phòng có sẵn</span>
+      <span class="ribbon-divider">·</span>
+      <a href="tel:0938126899" class="ribbon-phone"><i class="fa-solid fa-phone"></i> Hotline Quản lý: 0938 126 899</a>
+    </div>
+  </aside>
+
+  <!-- Header & Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <div class="header-container">
+      <a href="#" class="brand-block" aria-label="Trang chủ Lal Angle Homestay">
+        <span class="brand-monogram">LA</span>
+        <div class="brand-titles">
+          <span class="brand-primary">Lal Angle</span>
+          <span class="brand-secondary">Homestay & Retreat · Đà Lạt</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#story" class="nav-item active">Về Lal Angle</a>
+        <a href="#rooms" class="nav-item">Gian Phòng</a>
+        <a href="#living" class="nav-item">Tiện Ích</a>
+        <a href="#moments" class="nav-item">Khoảnh Khắc</a>
+        <a href="#booking" class="nav-item">Đặt Phòng</a>
+        <a href="#faq" class="nav-item">Lưu Ý</a>
+        <a href="#contact" class="nav-item">Liên Hệ</a>
+      </nav>
+
+      <div class="header-tools">
+        <!-- Sound of Forest (Bật/tắt tiếng gió đồi thông) -->
+        <button class="sound-button" id="soundToggle" title="Bật âm thanh gió đồi thông" aria-label="Bật âm thanh rừng thông">
+          <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+          <span class="sound-text">Gió Đồi</span>
+        </button>
+
+        <a href="#booking" class="btn-reservation">
+          <span>Gửi Yêu Cầu Đặt Phòng</span>
+        </a>
+
+        <button class="menu-hamburger" id="mobileMenuBtn" aria-label="Mở menu điều hướng">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION: BÌNH YÊN, TRẦM ẤM, KHÔNG ỒN Ả -->
+    <section class="hero-block" id="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-text-wrap">
+        <div class="hero-location-badge animate-fade-in">
+          <i class="fa-solid fa-location-dot"></i> Đồi Khởi Nghĩa Bắc Sơn, Phường 10, TP. Đà Lạt
+        </div>
+        <h1 class="hero-headline animate-fade-in-up">
+          Nơi nhịp thở chậm lại, <br>
+          và sớm mai thức giấc giữa <span class="serif-italic">vạt thông reo</span>
+        </h1>
+        <p class="hero-description animate-fade-in-up delay-1">
+          Bốn gian phòng mộc nép mình nơi sườn đồi thoai thoải nhìn thẳng xuống thung lũng mây. 
+          Không có tiếng còi xe, chỉ có hương gỗ thông ấm, vị cà phê mới pha và những buổi chiều ngắm hoàng hôn buông đỏ thềm nhà.
+        </p>
+
+        <!-- Form chọn nhanh ngày lưu trú -->
+        <div class="reservation-quick-card animate-fade-in-up delay-2">
+          <div class="quick-fields">
+            <div class="field-item">
+              <label><i class="fa-regular fa-calendar"></i> Ngày nhận phòng</label>
+              <input type="date" id="quickCheckIn" class="date-field">
+            </div>
+            <div class="field-item">
+              <label><i class="fa-regular fa-calendar-check"></i> Ngày trả phòng</label>
+              <input type="date" id="quickCheckOut" class="date-field">
+            </div>
+            <div class="field-item">
+              <label><i class="fa-regular fa-user"></i> Số lượng khách</label>
+              <select id="quickGuests" class="select-field">
+                <option value="2">2 Khách (Phòng đôi)</option>
+                <option value="4">3 - 4 Khách (Gia đình / Bạn bè)</option>
+                <option value="6">5 - 8 Khách (Căn hộ sân vườn)</option>
+                <option value="12">Thuê nguyên khu (Tối đa 14 khách)</option>
+              </select>
+            </div>
+            <div class="field-action">
+              <button type="button" id="btnQuickSearch" class="btn-check-dates">
+                <span>Chọn Gian Phòng</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chỉ số tin cậy thực tế -->
+        <div class="hero-facts">
+          <div class="fact-col">
+            <span class="fact-title">100% Ban Công Mộc</span>
+            <span class="fact-sub">Mỗi phòng đều có tầm nhìn thung lũng riêng</span>
+          </div>
+          <span class="fact-dot">•</span>
+          <div class="fact-col">
+            <span class="fact-title">Bữa Sáng Bản Địa</span>
+            <span class="fact-sub">Bánh mì xíu mại chén & Cà phê pha phin mộc</span>
+          </div>
+          <span class="fact-dot">•</span>
+          <div class="fact-col">
+            <span class="fact-title">Hỗ Trợ 06:00 - 23:00</span>
+            <span class="fact-sub">Gửi hành lý sớm cho khách xe đêm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <a href="#story" aria-label="Cuộn xuống tìm hiểu câu chuyện">
+          <span class="cue-bar"></span>
+          <span class="cue-label">Tìm Hiểu Về Nhà</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 1: CÂU CHUYỆN VỀ LAL ANGLE -->
+    <section class="section-story" id="story">
+      <div class="container">
+        <div class="story-grid">
+          
+          <div class="story-gallery">
+            <div class="story-photo-main">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=85" alt="Khuôn viên Lal Angle Homestay" class="img-story-hero">
+              <div class="story-stamp">
+                <span class="stamp-year">EST. 2023</span>
+                <span class="stamp-text">Một chốn nhỏ kín đáo giữa lòng phố núi</span>
+              </div>
+            </div>
+            <div class="story-photo-secondary">
+              <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=650&q=85" alt="Tách cà phê sáng tại hiên nhà" class="img-story-detail">
+            </div>
+          </div>
+
+          <div class="story-content">
+            <span class="section-overline">CÂU CHUYỆN VỀ NGÔI NHÀ</span>
+            <h2 class="section-heading">Chúng mình giữ gìn một khoảng trời bình yên cho những tâm hồn mỏi mệt</h2>
+            
+            <p class="paragraph-lead">
+              Lal Angle không phải là một khách sạn công nghiệp nhiều tầng. Chúng mình chỉ có vỏn vẹn bốn gian phòng xây từ gỗ thông cũ, đá núi và những ô kính lớn mở toang đón gió đồi.
+            </p>
+            
+            <p class="paragraph-body">
+              Nằm ở cuối con dốc Khởi Nghĩa Bắc Sơn, ngôi nhà nép mình dưới rặng thông già hơn ba mươi năm tuổi. Buổi sáng ở đây bắt đầu rất khẽ: tiếng chim lích chích chuyền cành, hơi lạnh phả vào ô cửa kính và mùi cà phê rang mộc thoảng qua từ căn bếp chung.
+            </p>
+
+            <p class="paragraph-body">
+              Chúng mình chủ động giới hạn số lượng khách để ai đến đây cũng có được sự riêng tư tuyệt đối, được nằm dài đọc một cuốn sách hay, ngâm mình trong làn nước ấm rải thảo mộc và quây quần bên bếp than hồng lúc đêm lạnh buông xuống.
+            </p>
+
+            <div class="story-features">
+              <div class="feature-box">
+                <span class="feature-number">01</span>
+                <div>
+                  <h4>Gỗ Thông Mộc & Đá Tự Nhiên</h4>
+                  <p>Mỗi góc nhà đều được thi công thủ công, giữ nguyên vân gỗ mộc mạc và hương thơm dễ chịu.</p>
+                </div>
+              </div>
+
+              <div class="feature-box">
+                <span class="feature-number">02</span>
+                <div>
+                  <h4>Bồn Tắm Thảo Mộc Rừng</h4>
+                  <p>Chuẩn bị sẵn muối hồng, cánh hoa cúc sấy và túi thảo mộc ngâm bồn thư giãn sau chuyến đi dài.</p>
+                </div>
+              </div>
+
+              <div class="feature-box">
+                <span class="feature-number">03</span>
+                <div>
+                  <h4>Bếp Nướng Sân Vườn</h4>
+                  <p>Sân cỏ rộng chuẩn bị sẵn bếp nướng than hoa, gia vị ướp và bàn gỗ dài dưới vòm đèn vàng.</p>
+                </div>
+              </div>
+
+              <div class="feature-box">
+                <span class="feature-number">04</span>
+                <div>
+                  <h4>Bữa Sáng Nóng Hổi</h4>
+                  <p>Tặng kèm bữa sáng đặc sản Đà Lạt và cà phê Arabica Cầu Đất nguyên chất mỗi sáng từ 7:30.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="story-actions">
+              <a href="#rooms" class="btn-solid">Xem Bảng Giá & Chi Tiết Phòng <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="#contact" class="btn-text-link">Xem vị trí & đường đi <i class="fa-solid fa-diamond-turn-right"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CÁC GIAN PHÒNG TẠI LAL ANGLE -->
+    <section class="section-rooms" id="rooms">
+      <div class="container">
+        
+        <div class="section-header-wrap">
+          <span class="section-overline">BỘ SƯU TẬP GIAN PHÒNG</span>
+          <h2 class="section-heading">Bốn không gian mang những xúc cảm riêng</h2>
+          <p class="section-subtext">Tất cả các phòng đều có phòng vệ sinh khép kín, bồn tắm nằm hoặc sen tắm đứng nóng lạnh, wifi riêng và tầm nhìn trực diện ra đồi thông.</p>
+        </div>
+
+        <!-- Room Filter Tabs -->
+        <div class="room-filter-row">
+          <button class="filter-btn active" data-filter="all">Tất Cả Các Phòng</button>
+          <button class="filter-btn" data-filter="couple">Phòng Cặp Đôi (2 Khách)</button>
+          <button class="filter-btn" data-filter="family">Phòng Gia Đình (4 - 6 Khách)</button>
+          <button class="filter-btn" data-filter="whole">Thuê Nguyên Căn (10 - 14 Khách)</button>
+        </div>
+
+        <div class="room-cards-grid">
+
+          <!-- ROOM 1: THE GLASS SANCTUARY -->
+          <article class="room-item" data-category="couple" data-room-key="glasshouse">
+            <div class="room-cover-wrap">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85" alt="Phòng The Glass Sanctuary" class="room-cover-img" loading="lazy">
+              <div class="room-pill-tag">Phòng ngắm mây được yêu thích nhất</div>
+              <button class="btn-room-photos" onclick="openPhotoGallery('glasshouse')">
+                <i class="fa-regular fa-images"></i> 5 Ảnh phòng
+              </button>
+            </div>
+            
+            <div class="room-body">
+              <div class="room-header-flex">
+                <div>
+                  <span class="room-type-label">HẠNG PHÒNG ĐÔI PANORAMA</span>
+                  <h3 class="room-name">The Glass Sanctuary (Gian Phòng Kính)</h3>
+                </div>
+                <div class="room-capacity">
+                  <i class="fa-solid fa-user-group"></i> 2 người lớn
+                </div>
+              </div>
+
+              <div class="room-meta-tags">
+                <span><i class="fa-solid fa-maximize"></i> 36m²</span>
+                <span><i class="fa-solid fa-bed"></i> 1 Giường King 1m8</span>
+                <span><i class="fa-solid fa-bath"></i> Bồn tắm tròn ngắm đồi</span>
+                <span><i class="fa-solid fa-tv"></i> Máy chiếu Full HD</span>
+              </div>
+
+              <p class="room-summary">
+                Ba mặt tường kính lớn đón trọn ánh nắng ban mai và sương mù bồng bềnh. Bạn có thể nằm thư giãn trên giường ngắm vạt thông reo hoặc ngâm mình trong bồn tắm thảo mộc lúc chiều tà.
+              </p>
+
+              <div class="room-amenity-checklist">
+                <span><i class="fa-solid fa-check"></i> Ban công gỗ riêng biệt thưởng trà</span>
+                <span><i class="fa-solid fa-check"></i> Bữa sáng nóng & cà phê phục vụ tại phòng</span>
+                <span><i class="fa-solid fa-check"></i> Máy sấy, bàn ủi hơi nước, máy sưởi ấm</span>
+              </div>
+
+              <div class="room-rate-footer">
+                <div class="rate-block">
+                  <div class="rate-ota-note">
+                    <span>Giá trên Booking/Agoda:</span>
+                    <del>1.450.000đ</del>
+                  </div>
+                  <div class="rate-direct">
+                    <span class="rate-currency">đ</span>
+                    <span class="rate-number">1.250.000</span>
+                    <span class="rate-cycle">/ đêm (CN - T5)</span>
+                  </div>
+                  <div class="rate-weekend-note">Cuối tuần (T6 - T7): 1.450.000đ/đêm</div>
+                </div>
+
+                <button type="button" class="btn-select-room" onclick="bookThisRoom('The Glass Sanctuary (1.250.000đ/đêm)', 1250000)">
+                  <span>Chọn Phòng Này</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ROOM 2: THE PINEWOOD ATTIC -->
+          <article class="room-item" data-category="couple" data-room-key="attic">
+            <div class="room-cover-wrap">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85" alt="Phòng The Pinewood Attic" class="room-cover-img" loading="lazy">
+              <div class="room-pill-tag">Ấm áp & Mộc mạc</div>
+              <button class="btn-room-photos" onclick="openPhotoGallery('attic')">
+                <i class="fa-regular fa-images"></i> 4 Ảnh phòng
+              </button>
+            </div>
+            
+            <div class="room-body">
+              <div class="room-header-flex">
+                <div>
+                  <span class="room-type-label">HẠNG PHÒNG ÁP MÁI GỖ THÔNG</span>
+                  <h3 class="room-name">The Pinewood Attic (Gian Áp Mái)</h3>
+                </div>
+                <div class="room-capacity">
+                  <i class="fa-solid fa-user-group"></i> 2 người lớn
+                </div>
+              </div>
+
+              <div class="room-meta-tags">
+                <span><i class="fa-solid fa-maximize"></i> 28m²</span>
+                <span><i class="fa-solid fa-bed"></i> 1 Giường Queen 1m6</span>
+                <span><i class="fa-solid fa-shower"></i> Sen tắm đứng nóng lạnh</span>
+                <span><i class="fa-solid fa-book-open"></i> Góc đọc sách thảm cói</span>
+              </div>
+
+              <p class="room-summary">
+                Gian áp mái được ốp hoàn toàn từ gỗ thông tự nhiên tỏa hương thơm ấm dịu. Ô cửa sổ giếng trời mở ra bầu trời đêm Đà Lạt ngàn vì sao, thích hợp cho những ai tìm kiếm sự tĩnh lặng tuyệt đối.
+              </p>
+
+              <div class="room-amenity-checklist">
+                <span><i class="fa-solid fa-check"></i> Lò sưởi giả lập và kệ sách chọn lọc</span>
+                <span><i class="fa-solid fa-check"></i> Trà hoa cúc mật ong và bình giữ nhiệt</span>
+                <span><i class="fa-solid fa-check"></i> Không gian cách âm yên tĩnh</span>
+              </div>
+
+              <div class="room-rate-footer">
+                <div class="rate-block">
+                  <div class="rate-ota-note">
+                    <span>Giá trên Booking/Agoda:</span>
+                    <del>1.150.000đ</del>
+                  </div>
+                  <div class="rate-direct">
+                    <span class="rate-currency">đ</span>
+                    <span class="rate-number">950.000</span>
+                    <span class="rate-cycle">/ đêm (CN - T5)</span>
+                  </div>
+                  <div class="rate-weekend-note">Cuối tuần (T6 - T7): 1.150.000đ/đêm</div>
+                </div>
+
+                <button type="button" class="btn-select-room" onclick="bookThisRoom('The Pinewood Attic (950.000đ/đêm)', 950000)">
+                  <span>Chọn Phòng Này</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ROOM 3: THE GARDEN COURTYARD -->
+          <article class="room-item" data-category="family" data-room-key="family">
+            <div class="room-cover-wrap">
+              <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=85" alt="Phòng The Garden Courtyard" class="room-cover-img" loading="lazy">
+              <div class="room-pill-tag">Gia Đình & Bạn Thân</div>
+              <button class="btn-room-photos" onclick="openPhotoGallery('family')">
+                <i class="fa-regular fa-images"></i> 6 Ảnh phòng
+              </button>
+            </div>
+            
+            <div class="room-body">
+              <div class="room-header-flex">
+                <div>
+                  <span class="room-type-label">CĂN HỘ 2 PHÒNG NGỦ RIÊNG</span>
+                  <h3 class="room-name">The Garden Courtyard (Căn Sân Vườn)</h3>
+                </div>
+                <div class="room-capacity">
+                  <i class="fa-solid fa-user-group"></i> 4 - 6 khách
+                </div>
+              </div>
+
+              <div class="room-meta-tags">
+                <span><i class="fa-solid fa-maximize"></i> 68m²</span>
+                <span><i class="fa-solid fa-bed"></i> 2 Giường Queen 1m6</span>
+                <span><i class="fa-solid fa-kitchen-set"></i> Bếp nhỏ tiện nghi</span>
+                <span><i class="fa-solid fa-tree"></i> Sân cỏ cẩm tú cầu</span>
+              </div>
+
+              <p class="room-summary">
+                Không gian rộng rãi với 2 buồng ngủ riêng tư, phòng khách sinh hoạt chung và gian bếp mộc có sẵn gia vị cơ bản. Thích hợp cho gia đình có con nhỏ hoặc nhóm 4-6 bạn thân muốn ở quây quần bên nhau.
+              </p>
+
+              <div class="room-amenity-checklist">
+                <span><i class="fa-solid fa-check"></i> Hiên sân vườn riêng có bàn tiệc trà</span>
+                <span><i class="fa-solid fa-check"></i> Tủ lạnh lớn, ấm đun, máy nướng bánh mì</span>
+                <span><i class="fa-solid fa-check"></i> 2 Nhà vệ sinh riêng biệt thuận tiện</span>
+              </div>
+
+              <div class="room-rate-footer">
+                <div class="rate-block">
+                  <div class="rate-ota-note">
+                    <span>Giá trên Booking/Agoda:</span>
+                    <del>2.600.000đ</del>
+                  </div>
+                  <div class="rate-direct">
+                    <span class="rate-currency">đ</span>
+                    <span class="rate-number">2.200.000</span>
+                    <span class="rate-cycle">/ đêm (CN - T5)</span>
+                  </div>
+                  <div class="rate-weekend-note">Cuối tuần (T6 - T7): 2.600.000đ/đêm</div>
+                </div>
+
+                <button type="button" class="btn-select-room" onclick="bookThisRoom('The Garden Courtyard (2.200.000đ/đêm)', 2200000)">
+                  <span>Chọn Phòng Này</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ROOM 4: THE ENTIRE ESTATE -->
+          <article class="room-item" data-category="whole" data-room-key="estate">
+            <div class="room-cover-wrap">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85" alt="Thuê Nguyên Căn Lal Angle" class="room-cover-img" loading="lazy">
+              <div class="room-pill-tag">Bao Trọn Khuôn Viên</div>
+              <button class="btn-room-photos" onclick="openPhotoGallery('estate')">
+                <i class="fa-regular fa-images"></i> 8 Ảnh toàn cảnh
+              </button>
+            </div>
+            
+            <div class="room-body">
+              <div class="room-header-flex">
+                <div>
+                  <span class="room-type-label">THUÊ TRỌN KHU BIỆT LẬP</span>
+                  <h3 class="room-name">Lal Angle En-bloc (Bao Trọn Khu)</h3>
+                </div>
+                <div class="room-capacity">
+                  <i class="fa-solid fa-user-group"></i> 10 - 14 khách
+                </div>
+              </div>
+
+              <div class="room-meta-tags">
+                <span><i class="fa-solid fa-maximize"></i> 350m²</span>
+                <span><i class="fa-solid fa-door-closed"></i> 4 Gian phòng khép kín</span>
+                <span><i class="fa-solid fa-fire"></i> Sân cỏ BBQ & Lửa trại</span>
+                <span><i class="fa-solid fa-water"></i> Hồ sục nước ấm ngoài trời</span>
+              </div>
+
+              <p class="room-summary">
+                Độc quyền toàn bộ ngôi nhà và sân vườn riêng tư 100%. Đoàn bạn thoải mái nấu nướng tại gian bếp lớn, mở tiệc nướng BBQ ngoài trời và ngâm mình trong bồn sục nước ấm ngắm hoàng hôn đỏ thung lũng.
+              </p>
+
+              <div class="room-amenity-checklist">
+                <span><i class="fa-solid fa-check"></i> Tặng 1 set nướng BBQ heo rừng & gà đồi ướp sẵn</span>
+                <span><i class="fa-solid fa-check"></i> Miễn phí than nướng và người hỗ trợ dọn dẹp</span>
+                <span><i class="fa-solid fa-check"></i> Loa Marshall công suất vừa nghe thư giãn</span>
+              </div>
+
+              <div class="room-rate-footer">
+                <div class="rate-block">
+                  <div class="rate-ota-note">
+                    <span>Giá trên Booking/Agoda:</span>
+                    <del>7.200.000đ</del>
+                  </div>
+                  <div class="rate-direct">
+                    <span class="rate-currency">đ</span>
+                    <span class="rate-number">5.800.000</span>
+                    <span class="rate-cycle">/ đêm (CN - T5)</span>
+                  </div>
+                  <div class="rate-weekend-note">Cuối tuần (T6 - T7): 6.800.000đ/đêm</div>
+                </div>
+
+                <button type="button" class="btn-select-room" onclick="bookThisRoom('Lal Angle En-bloc Bao Trọn Khu (5.800.000đ/đêm)', 5800000)">
+                  <span>Chọn Thuê Trọn Khu</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: TIỆN ÍCH DỊCH VỤ THỰC TẾ -->
+    <section class="section-living" id="living">
+      <div class="container">
+        <div class="section-header-wrap text-center">
+          <span class="section-overline">TIỆN NGHI THIẾT THỰC</span>
+          <h2 class="section-heading">Mọi chi tiết đều được chăm chút từ sự chân thành</h2>
+          <p class="section-subtext">Chúng mình mong muốn bạn có cảm giác thoải mái, ấm áp như đang về lại ngôi nhà thứ hai của mình ở Đà Lạt.</p>
+        </div>
+
+        <div class="living-grid">
+          
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-water-ladder"></i></div>
+            <h4>Bồn Sục Nước Ấm Ngoài Trời</h4>
+            <p>Hồ sục nước ấm điều hòa 32°C trên đài ngắm cảnh thung lũng. Ngâm mình giữa làn nước ấm lúc chiều tà là trải nghiệm bạn không nên bỏ lỡ.</p>
+          </div>
+
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-fire-burner"></i></div>
+            <h4>Bếp Nướng BBQ & Than Hoa</h4>
+            <p>Sân cỏ chuẩn bị sẵn bếp nướng, kẹp gắp, vỉ nướng và bàn ăn dài. Bạn có thể tự mua đồ nướng về hoặc nhờ homestay chuẩn bị set ướp sẵn.</p>
+          </div>
+
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+            <h4>Cà Phê Mộc & Trà Hoa Cúc</h4>
+            <p>Quầy tự pha trà thảo mộc sấy lạnh và cà phê hạt Arabica Cầu Đất nguyên chất luôn đầy ắp để bạn tự thưởng thức bất kỳ lúc nào trong ngày.</p>
+          </div>
+
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-motorcycle"></i></div>
+            <h4>Cho Thuê Xe Máy Tại Nhà</h4>
+            <p>Đội xe máy tay ga (Vision, AirBlade) và xe số (Wave) đời mới, máy êm, bảo dưỡng định kỳ và giao nhận ngay tại hiên homestay (120k - 150k/ngày).</p>
+          </div>
+
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-paw"></i></div>
+            <h4>Thân Thiện Với Thú Cưng</h4>
+            <p>Nhà luôn chào đón các bạn cún và mèo cưng đi cùng gia đình. Khuôn viên rào gỗ an toàn và có thảm cỏ riêng cho các bé chạy nhảy tự do.</p>
+          </div>
+
+          <div class="living-card">
+            <div class="living-icon"><i class="fa-solid fa-wifi"></i></div>
+            <h4>Internet Tốc Độ Cao 300Mbps</h4>
+            <p>Đường truyền cáp quang mạnh mẽ khắp trong phòng và ngoài sân. Bạn hoàn toàn yên tâm nếu có những buổi họp online hay cần làm việc từ xa.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: KHOẢNH KHẮC THỰC TẾ TẠI LAL ANGLE -->
+    <section class="section-moments" id="moments">
+      <div class="container">
+        <div class="section-header-wrap text-center">
+          <span class="section-overline">GÓC ẢNH CHÂN THẬT</span>
+          <h2 class="section-heading">Những khoảnh khắc không cần bộ lọc màu</h2>
+          <p class="section-subtext">Ánh nắng xiên qua đồi thông, ly cà phê bốc khói hay vệt mây vắt ngang triền núi lúc sớm mai.</p>
+        </div>
+
+        <div class="moments-masonry">
+          <div class="moment-col">
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1507038772120-7ffe76778f01?auto=format&fit=crop&w=800&q=85" alt="Sương sớm tại thung lũng" loading="lazy">
+              <div class="moment-caption">Biển mây sớm mai nhìn từ ban công phòng kính · 05:45</div>
+            </div>
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=85" alt="Bồn tắm ngâm thảo mộc" loading="lazy">
+              <div class="moment-caption">Bồn tắm ngâm thảo mộc sau một ngày dạo phố · 16:30</div>
+            </div>
+          </div>
+
+          <div class="moment-col">
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=85" alt="Bữa tiệc BBQ ấm áp" loading="lazy">
+              <div class="moment-caption">Bàn tiệc nướng ấm cúng sân vườn bên bạn bè · 19:00</div>
+            </div>
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=800&q=85" alt="Lửa trại ban đêm" loading="lazy">
+              <div class="moment-caption">Ngọn lửa ấm xua tan cái lạnh 15°C về đêm · 21:15</div>
+            </div>
+          </div>
+
+          <div class="moment-col">
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=85" alt="Hoàng hôn buông trên đồi" loading="lazy">
+              <div class="moment-caption">Vệt nắng chiều muộn phủ vàng vách kính · 17:20</div>
+            </div>
+            <div class="moment-item">
+              <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=85" alt="Góc đọc sách tĩnh lặng" loading="lazy">
+              <div class="moment-caption">Góc đọc sách nhỏ bình yên bên gian áp mái · 14:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CẢM NHẬN KHÁCH ĐÃ LƯU TRÚ -->
+    <section class="section-testimonials" id="reviews">
+      <div class="container">
+        <div class="section-header-wrap text-center">
+          <span class="section-overline">SỔ TAY LƯU NIỆM</span>
+          <h2 class="section-heading">Những dòng cảm nghĩ khách để lại bên hiên nhà</h2>
+          <p class="section-subtext">Cảm ơn những vị khách quý đã lựa chọn và yêu mến Lal Angle như một góc thân thuộc ở Đà Lạt.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testi-quote">
+              "Mình đi Đà Lạt cả chục lần nhưng đây là lần đầu tìm được một homestay đúng nghĩa bình yên. Không bị tiếng xe ồn ào như ở trung tâm. Sáng mở mắt ra là mây trắng xóa trước mặt. Chị An quản lý siêu chu đáo, gửi trước lộ trình đường đi chi tiết và hỗ trợ tụi mình check-in sớm từ 10h sáng vì phòng có sẵn. Chắc chắn sẽ quay lại!"
+            </p>
+            <div class="testi-author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Mai Anh & Tuấn" class="author-avatar">
+              <div>
+                <strong>Mai Anh & Tuấn Kiệt</strong>
+                <span>Du khách từ Hà Nội · Ở phòng The Glass Sanctuary (3 đêm)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testi-quote">
+              "Đặt trực tiếp qua web của nhà được tiết kiệm gần 500k so với giá mình xem bên Agoda, lại được chị quản lý tặng kèm set bánh mì xíu mại chén ăn sáng rất ngon. Phòng ốc sạch sẽ tinh tươm, chăn ga thơm mùi nắng. Buổi tối ngâm bồn nước ấm ngắm vạt thông lạnh thật sự chữa lành tâm hồn."
+            </p>
+            <div class="testi-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Hoàng Nam" class="author-avatar">
+              <div>
+                <strong>Hoàng Nam</strong>
+                <span>Nhiếp ảnh gia tự do · TP. Hồ Chí Minh</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testi-quote">
+              "Gia đình mình gồm 4 người lớn và 2 bé nhỏ thuê căn The Garden Courtyard. Khuôn viên sân vườn rợp hoa, các bé chơi an toàn. Gian bếp đầy đủ đồ dùng để mẹ mình nấu cháo cho các cháu. Bạn quản lý hỗ trợ nhóm than nướng BBQ rất nhiệt tình. Một nơi đáng tiền và có gu!"
+            </p>
+            <div class="testi-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Chị Thùy Dung" class="author-avatar">
+              <div>
+                <strong>Chị Thùy Dung</strong>
+                <span>Đà Nẵng · Nghỉ dưỡng gia đình</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FORM ĐẶT PHÒNG TRỰC TIẾP (THỰC TẾ & CHỈN CHU) -->
+    <section class="section-booking" id="booking">
+      <div class="container">
+        <div class="booking-grid">
+          
+          <!-- Cột thông tin liên hệ và chính sách -->
+          <div class="booking-sidebar">
+            <span class="section-overline light-text">ĐẶT PHÒNG TRỰC TIẾP</span>
+            <h2 class="sidebar-heading">Gửi yêu cầu đặt phòng tới Quản lý Lal Angle</h2>
+            <p class="sidebar-intro">
+              Sau khi bạn gửi thông tin, Quản lý homestay sẽ liên hệ trực tiếp qua điện thoại hoặc Zalo trong vòng <strong>5 - 10 phút</strong> để xác nhận tình trạng phòng trống và hướng dẫn bạn đặt cọc giữ phòng.
+            </p>
+
+            <div class="booking-perks-list">
+              <div class="perk-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                  <strong>Bảo đảm giá trực tiếp tốt nhất:</strong> Rẻ hơn 15% - 20% so với đặt qua các sàn OTA trung gian.
+                </div>
+              </div>
+
+              <div class="perk-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                  <strong>Chính sách dời ngày linh hoạt:</strong> Miễn phí bảo lưu hoặc dời lịch khi thông báo trước 5 ngày.
+                </div>
+              </div>
+
+              <div class="perk-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                  <strong>Tặng kèm bữa sáng & trà chiều:</strong> Bánh mì xíu mại chén và set trà hoa cúc phục vụ mỗi sáng.
+                </div>
+              </div>
+            </div>
+
+            <!-- Thẻ Quản Lý Homestay Liên Hệ Thực Tế -->
+            <div class="manager-card">
+              <div class="manager-profile">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=140&q=80" alt="Ms. An - Quản lý Lal Angle" class="manager-avatar">
+                <div class="manager-meta">
+                  <span class="manager-badge"><span class="badge-dot"></span> Đang trực tư vấn</span>
+                  <strong class="manager-name">Ms. Thúy An</strong>
+                  <span class="manager-role">Quản lý tiếp đón · Lal Angle Homestay</span>
+                </div>
+              </div>
+              
+              <div class="manager-contacts">
+                <a href="tel:0938126899" class="btn-mgr-call">
+                  <i class="fa-solid fa-phone-volume"></i> Gọi: 0938 126 899
+                </a>
+                <a href="https://zalo.me/0938126899" target="_blank" rel="noopener" class="btn-mgr-zalo">
+                  <i class="fa-solid fa-comment-dots"></i> Chat Zalo trực tiếp
+                </a>
+              </div>
+              <div class="manager-sub">Giờ hỗ trợ: 06:00 - 23:00 hàng ngày</div>
+            </div>
+
+            <!-- Thông tin tài khoản đặt cọc minh bạch -->
+            <div class="bank-info-box">
+              <div class="bank-title"><i class="fa-solid fa-building-columns"></i> Thông tin chuyển khoản giữ phòng:</div>
+              <div class="bank-row"><span>Ngân hàng:</span> <strong>Vietcombank (Chi nhánh Lâm Đồng)</strong></div>
+              <div class="bank-row"><span>Số tài khoản:</span> <strong class="copyable-stk" onclick="copyStk()">0071 000 899 999 <i class="fa-regular fa-copy"></i></strong></div>
+              <div class="bank-row"><span>Chủ tài khoản:</span> <strong>NGUYEN THUY AN (LAL ANGLE)</strong></div>
+              <div class="bank-note">* Quý khách chỉ chuyển cọc 50% sau khi đã được quản lý gọi điện/nhắn Zalo xác nhận phòng trống.</div>
+            </div>
+
+          </div>
+
+          <!-- Cột Form Đặt Phòng Thực Tế -->
+          <div class="booking-form-wrapper">
+            <div class="form-box">
+              <div class="form-header-line">
+                <h3>Phiếu Đăng Ký Lưu Trú</h3>
+                <span class="step-pill">BƯỚC 1 / 2</span>
+              </div>
+              <p class="form-sub-intro">Vui lòng điền thông tin chuyến đi của bạn để homestay chuẩn bị tiếp đón chu đáo nhất.</p>
+
+              <form id="bookingForm" class="real-booking-form" novalidate>
+                
+                <div class="form-row-2">
+                  <div class="form-cell">
+                    <label for="guestName">Họ và tên của bạn <span class="star">*</span></label>
+                    <input type="text" id="guestName" name="guestName" placeholder="Ví dụ: Nguyễn Thùy Trang" required>
+                    <span class="err-msg" id="err-guestName">Vui lòng nhập họ và tên của bạn</span>
+                  </div>
+
+                  <div class="form-cell">
+                    <label for="guestPhone">Số điện thoại / Zalo <span class="star">*</span></label>
+                    <input type="tel" id="guestPhone" name="guestPhone" placeholder="Ví dụ: 0912 345 678" required>
+                    <span class="err-msg" id="err-guestPhone">Vui lòng nhập số điện thoại hợp lệ (10 số)</span>
+                  </div>
+                </div>
+
+                <div class="form-cell">
+                  <label for="roomType">Lựa chọn gian phòng mong muốn <span class="star">*</span></label>
+                  <select id="roomType" name="roomType" required>
+                    <option value="" disabled selected>-- Bấm để chọn gian phòng phù hợp --</option>
+                    <option value="The Glass Sanctuary (1.250.000đ/đêm)" data-price="1250000">The Glass Sanctuary (Phòng kính panorama 2 khách) - 1.250.000đ/đêm</option>
+                    <option value="The Pinewood Attic (950.000đ/đêm)" data-price="950000">The Pinewood Attic (Gian áp mái thông mộc 2 khách) - 950.000đ/đêm</option>
+                    <option value="The Garden Courtyard (2.200.000đ/đêm)" data-price="2200000">The Garden Courtyard (Căn hộ 2 phòng ngủ 4-6 khách) - 2.200.000đ/đêm</option>
+                    <option value="Lal Angle En-bloc Bao Trọn Khu (5.800.000đ/đêm)" data-price="5800000">Lal Angle En-bloc (Thuê trọn khu 10-14 khách) - 5.800.000đ/đêm</option>
+                  </select>
+                  <span class="err-msg" id="err-roomType">Vui lòng chọn loại phòng</span>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-cell">
+                    <label for="checkInDate">Ngày nhận phòng (Check-in) <span class="star">*</span></label>
+                    <input type="date" id="checkInDate" name="checkInDate" required>
+                    <span class="err-msg" id="err-checkInDate">Vui lòng chọn ngày nhận phòng</span>
+                  </div>
+
+                  <div class="form-cell">
+                    <label for="checkOutDate">Ngày trả phòng (Check-out) <span class="star">*</span></label>
+                    <input type="date" id="checkOutDate" name="checkOutDate" required>
+                    <span class="err-msg" id="err-checkOutDate">Check-out phải sau ngày Check-in</span>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-cell">
+                    <label for="guestCount">Số lượng khách lưu trú</label>
+                    <select id="guestCount" name="guestCount">
+                      <option value="1 người lớn">1 người lớn</option>
+                      <option value="2 người lớn" selected>2 người lớn</option>
+                      <option value="2 người lớn + 1 trẻ em">2 người lớn + 1 trẻ em</option>
+                      <option value="3 người lớn">3 người lớn</option>
+                      <option value="4 người lớn">4 người lớn</option>
+                      <option value="5 - 6 người">5 - 6 người</option>
+                      <option value="Đoàn trên 8 người">Đoàn trên 8 người</option>
+                    </select>
+                  </div>
+
+                  <div class="form-cell">
+                    <label for="transportMethod">Phương tiện di chuyển đến</label>
+                    <select id="transportMethod" name="transportMethod">
+                      <option value="Xe giường nằm (Thành Bưởi/Phương Trang)">Xe giường nằm (Cần gửi đồ sớm)</option>
+                      <option value="Máy bay (Sân bay Liên Khương)">Máy bay (Cần hỗ trợ xe đón)</option>
+                      <option value="Xe ô tô riêng tự lái">Xe ô tô riêng tự lái (Có bãi đỗ)</option>
+                      <option value="Xe máy tự túc">Xe máy tự túc</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-cell">
+                  <label for="extraService">Dịch vụ bạn muốn đăng ký thêm</label>
+                  <select id="extraService" name="extraService">
+                    <option value="Chỉ phòng & bữa sáng tặng kèm">Chỉ phòng & Bữa sáng tặng kèm</option>
+                    <option value="Thuê xe máy tay ga (150k/ngày)">Thuê xe máy tay ga (150.000đ/ngày)</option>
+                    <option value="Đăng ký tiệc nướng BBQ sân vườn">Đăng ký tiệc nướng BBQ sân vườn buổi tối</option>
+                    <option value="Trọn gói BBQ + Thuê xe máy">Trọn gói Tiệc BBQ + Thuê xe máy</option>
+                  </select>
+                </div>
+
+                <div class="form-cell">
+                  <label for="specialNotes">Lời nhắn cho Lal Angle (nếu có)</label>
+                  <textarea id="specialNotes" name="specialNotes" rows="2" placeholder="Ví dụ: Giờ xe đến dự kiến 06:00 sáng, chuyến đi kỷ niệm ngày cưới, cần set hoa tươi..."></textarea>
+                </div>
+
+                <!-- Bảng tính chi phí tạm tính thời gian thực -->
+                <div class="pricing-calculator-card" id="pricingCalc">
+                  <div class="calc-row">
+                    <span>Số đêm lưu trú dự kiến:</span>
+                    <strong id="calcNights">1 đêm</strong>
+                  </div>
+                  <div class="calc-row">
+                    <span>Giá niêm yết qua sàn OTA:</span>
+                    <span class="strike" id="calcOtaTotal">1.450.000đ</span>
+                  </div>
+                  <div class="calc-row highlight">
+                    <span>Tổng tiền phòng đặt trực tiếp:</span>
+                    <strong class="highlight-price" id="calcDirectTotal">1.250.000đ</strong>
+                  </div>
+                  <div class="calc-savings">
+                    <i class="fa-solid fa-shield-heart"></i> Tiết kiệm trực tiếp <strong id="calcSavedMoney">200.000đ</strong> so với các ứng dụng đặt phòng!
+                  </div>
+                </div>
+
+                <!-- Nút bấm Gửi Yêu Cầu -->
+                <button type="submit" class="btn-submit-inquiry" id="btnSubmitInquiry">
+                  <span class="btn-label"><i class="fa-regular fa-paper-plane"></i> GỬI YÊU CẦU ĐẶT PHÒNG TỚI QUẢN LÝ</span>
+                  <span class="btn-busy d-none"><i class="fa-solid fa-spinner fa-spin"></i> Đang chuyển thông tin...</span>
+                </button>
+
+                <div class="form-footer-assurance">
+                  <span><i class="fa-solid fa-check"></i> Không yêu cầu thẻ tín dụng</span>
+                  <span>·</span>
+                  <span><i class="fa-solid fa-phone"></i> Quản lý xác nhận trong 5-10 phút</span>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: LƯU Ý & CÂU HỎI THƯỜNG GẶP (FAQ) -->
+    <section class="section-faq" id="faq">
+      <div class="container">
+        <div class="section-header-wrap text-center">
+          <span class="section-overline">THÔNG TIN LƯU TRÚ</span>
+          <h2 class="section-heading">Những điều bạn cần biết trước khi xách ba lô lên</h2>
+          <p class="section-subtext">Vài lưu ý nhỏ để kỳ nghỉ của bạn tại Lal Angle diễn ra thật suôn sẻ và ấm cúng.</p>
+        </div>
+
+        <div class="faq-accordion-list" id="faqAccordion">
+          
+          <div class="faq-row active">
+            <button class="faq-trigger">
+              <span>Giờ nhận phòng (Check-in) và trả phòng (Check-out) quy định ra sao?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-content">
+              <p>Giờ nhận phòng tiêu chuẩn là từ <strong>14:00</strong> và giờ trả phòng là trước <strong>12:00</strong> trưa hôm sau. Nếu bạn đi xe giường nằm đến Đà Lạt sớm lúc 05:00 - 07:00 sáng, bạn cứ đến homestay gửi hành lý, vệ sinh cá nhân, dùng cà phê sáng và nghỉ ngơi tại phòng sinh hoạt chung. Nếu phòng đêm trước trống hoặc đã được dọn xong sớm, quản lý luôn sẵn lòng mời bạn nhận phòng sớm hoàn toàn không tính phụ phí.</p>
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button class="faq-trigger">
+              <span>Đường vào Lal Angle xe ô tô có thuận tiện không? Có chỗ đỗ xe không?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-content">
+              <p>Đường Khởi Nghĩa Bắc Sơn là trục đường nhựa lớn, đoạn dốc vào homestay đã được trải bê tông phẳng phiu, xe ô tô 4 chỗ, 7 chỗ và 16 chỗ vào tận cổng hiên nhà thoải mái. Homestay có khoảng sân riêng có thể đỗ được 3 xe ô tô và nhiều xe máy an toàn, có camera giám sát và đèn chiếu sáng ban đêm.</p>
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button class="faq-trigger">
+              <span>Chính sách cọc giữ phòng và dời lịch trong trường hợp bận việc đột xuất?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-content">
+              <p>Để đảm bảo phòng được giữ chắc chắn cho bạn, homestay nhận cọc 50% tiền phòng. Nếu bạn có việc đột xuất, vui lòng báo trước cho quản lý ít nhất <strong>05 ngày</strong> so với ngày check-in, homestay sẽ hỗ trợ bảo lưu 100% tiền cọc và dời lịch lưu trú sang một ngày khác trong vòng 06 tháng miễn phí.</p>
+            </div>
+          </div>
+
+          <div class="faq-row">
+            <button class="faq-trigger">
+              <span>Tụi mình muốn tổ chức tiệc nướng BBQ buổi tối thì homestay hỗ trợ ra sao?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-content">
+              <p>Homestay có sẵn bếp nướng than hoa, vỉ nướng, kẹp gắp, bát đĩa và bàn ăn ngoài sân vườn phục vụ miễn phí. Bạn chỉ cần mua than hoa (homestay có bán sẵn 30k/bịch) hoặc bạn có thể đặt set nướng ướp sẵn đặc sản (heo rừng, gà đồi, rau củ) của homestay với giá 180k - 220k/người, bạn quản lý sẽ hỗ trợ nhóm lửa và dọn dẹp sau tiệc!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: BẢN ĐỒ & LIÊN HỆ THỰC TẾ -->
+    <section class="section-location" id="contact">
+      <div class="container">
+        <div class="location-box">
+          
+          <div class="loc-text-col">
+            <span class="section-overline light-text">ĐƯỜNG VỀ NHÀ</span>
+            <h2 class="loc-heading">Ghé Thăm Lal Angle</h2>
+            <p class="loc-body">
+              Nằm cách Quảng trường Lâm Viên và Hồ Xuân Hương chỉ 2.5km (chừng 7-10 phút đi xe máy), Lal Angle đủ gần để bạn ghé chợ đêm, nhưng cũng đủ tách biệt để giữ trọn sự yên ả của rừng thông.
+            </p>
+
+            <div class="address-details">
+              <div class="addr-line">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong>Địa chỉ:</strong> Số 24/6 đường Khởi Nghĩa Bắc Sơn, Phường 10, TP. Đà Lạt, Tỉnh Lâm Đồng
+                </div>
+              </div>
+
+              <div class="addr-line">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <strong>Hotline Quản lý / Đặt phòng:</strong> <a href="tel:0938126899">0938 126 899</a> (Ms. Thúy An)
+                </div>
+              </div>
+
+              <div class="addr-line">
+                <i class="fa-solid fa-motorcycle"></i>
+                <div>
+                  <strong>Hỗ trợ chỉ đường / Đón xe:</strong> <a href="tel:0909238679">0909 238 679</a> (Mr. Lâm)
+                </div>
+              </div>
+
+              <div class="addr-line">
+                <i class="fa-regular fa-envelope"></i>
+                <div>
+                  <strong>Email:</strong> <a href="mailto:reservation@lalangle.vn">reservation@lalangle.vn</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="loc-action-btns">
+              <a href="https://maps.google.com/?q=Dalat" target="_blank" rel="noopener" class="btn-solid">
+                <i class="fa-solid fa-location-arrow"></i> Mở Bản Đồ Google Maps
+              </a>
+              <a href="https://zalo.me/0938126899" target="_blank" rel="noopener" class="btn-outline-white">
+                <i class="fa-solid fa-comment-dots"></i> Nhắn Zalo Quản Lý
+              </a>
+            </div>
+          </div>
+
+          <div class="loc-map-visual">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80" alt="Bản đồ đường đi Lal Angle" class="map-bg-img">
+            <div class="map-marker-card">
+              <div class="marker-dot"></div>
+              <div>
+                <strong>Lal Angle Homestay & Retreat</strong>
+                <span>Hẻm 24/6 Khởi Nghĩa Bắc Sơn · Cổng hoa dã quỳ</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: CHUẨN BOUTIQUE HOMESTAY ĐÀ LẠT -->
+  <footer class="site-footer">
+    <div class="container footer-content-grid">
+      
+      <div class="footer-col-brand">
+        <div class="brand-block footer-brand-block">
+          <span class="brand-monogram">LA</span>
+          <div class="brand-titles">
+            <span class="brand-primary">Lal Angle</span>
+            <span class="brand-secondary">Homestay & Retreat · Đà Lạt</span>
+          </div>
+        </div>
+        <p class="footer-story-note">
+          Ngôi nhà gỗ nhỏ nép mình nơi sườn đồi Khởi Nghĩa Bắc Sơn. Nơi lưu giữ những buổi sáng ngắm mây trôi và những đêm lửa trại ấm cúng bên bạn bè.
+        </p>
+        <div class="footer-social-icons">
+          <a href="#" aria-label="Facebook Fanpage" title="Fanpage Lal Angle"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://zalo.me/0938126899" target="_blank" rel="noopener" aria-label="Zalo Chat" title="Zalo"><i class="fa-solid fa-comment"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col-nav">
+        <h4>VỀ HOMESTAY</h4>
+        <ul>
+          <li><a href="#story">Câu chuyện ngôi nhà</a></li>
+          <li><a href="#rooms">Bảng giá 4 gian phòng</a></li>
+          <li><a href="#living">Tiện ích & Bữa sáng</a></li>
+          <li><a href="#moments">Khoảnh khắc thực tế</a></li>
+          <li><a href="#booking">Gửi yêu cầu đặt phòng</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-nav">
+        <h4>QUY ĐỊNH LƯU TRÚ</h4>
+        <ul>
+          <li><a href="#faq">Giờ nhận & trả phòng</a></li>
+          <li><a href="#faq">Chính sách bảo lưu cọc</a></li>
+          <li><a href="#faq">Nội quy mang thú cưng</a></li>
+          <li><a href="#faq">Giữ yên tĩnh sau 22:30</a></li>
+          <li><a href="#faq">Hướng dẫn bãi đỗ ô tô</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-owner">
+        <h4>QUẢN LÝ HOMESTAY</h4>
+        <p class="owner-instruction">Hệ thống thông báo Telegram Bot & Sổ ghi nhận đơn khách đặt:</p>
+        <button type="button" class="btn-open-portal" id="btnOpenOwnerSettings">
+          <i class="fa-solid fa-sliders"></i> Quản Lý Đơn & Cấu Hình Bot
+        </button>
+        <span class="owner-status" id="telegramStatusLabel">
+          <i class="fa-solid fa-circle-check"></i> Đang kích hoạt thông báo Telegram trực tiếp
+        </span>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container bottom-bar-flex">
+        <p>© 2026 Lal Angle Homestay & Retreat. 24/6 Khởi Nghĩa Bắc Sơn, Phường 10, Đà Lạt. Vận hành độc lập.</p>
+        <div class="bottom-trust">
+          <span><i class="fa-solid fa-heart"></i> Mến khách chân thành</span>
+          <span>·</span>
+          <span><i class="fa-solid fa-phone"></i> Hỗ trợ: 0938 126 899</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTION CAPSULE: THANH CONCIERGE TINH TẾ -->
+  <aside class="floating-concierge">
+    <!-- Nút Gọi Hotline Thật -->
+    <a href="tel:0938126899" class="concierge-btn btn-call" title="Gọi Quản lý Ms. An">
+      <i class="fa-solid fa-phone"></i>
+      <span class="btn-title">0938 126 899</span>
+    </a>
+
+    <!-- Nút Chat Zalo Thật -->
+    <a href="https://zalo.me/0938126899" target="_blank" rel="noopener" class="concierge-btn btn-zalo" title="Chat Zalo hỗ trợ ngay">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span class="btn-title">Zalo Quản Lý</span>
+    </a>
+
+    <!-- Nút Đặt Phòng Nhanh -->
+    <a href="#booking" class="concierge-btn btn-book" title="Điền phiếu đặt phòng">
+      <i class="fa-regular fa-calendar-check"></i>
+      <span class="btn-title">Đặt Phòng</span>
+    </a>
+  </aside>
+
+  <!-- SUCCESS NOTIFICATION MODAL (THÔNG BÁO XÁC NHẬN CHUẨN THỰC TẾ) -->
+  <div class="modal-backdrop" id="successModal">
+    <div class="modal-sheet animate-slide-up">
+      <div class="sheet-icon-check">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <span class="section-overline">YÊU CẦU ĐÃ ĐƯỢC CHUYỂN TIẾP</span>
+      <h2 class="sheet-heading">Cảm ơn bạn đã gửi yêu cầu!</h2>
+      <p class="sheet-body">
+        Thông tin đặt phòng của bạn vừa được gửi thẳng tới điện thoại của <strong>Ms. Thúy An (Quản lý Lal Angle)</strong>. Chúng mình sẽ liên hệ lại với bạn trong vòng <strong>5 - 10 phút</strong> để xác nhận và gửi thông tin hướng dẫn chi tiết nhé.
+      </p>
+
+      <div class="booking-receipt-box" id="modalBookingSummary">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="telegram-alert-pill">
+        <div class="tg-circle-icon"><i class="fa-brands fa-telegram"></i></div>
+        <div class="tg-alert-text">
+          <strong>Thông báo Telegram Quản Lý đã kích hoạt!</strong>
+          <span id="telegramSendResult">Đã chuyển tin nhắn thông báo tức thì tới điện thoại của Quản lý homestay.</span>
+        </div>
+      </div>
+
+      <div class="sheet-actions">
+        <a href="https://zalo.me/0938126899" target="_blank" rel="noopener" class="btn-solid">
+          <i class="fa-solid fa-comment-dots"></i> Nhắn Zalo cho Ms. An ngay
+        </a>
+        <button type="button" class="btn-outline" onclick="closeSuccessModal()">Đóng cửa sổ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OWNER SETTINGS & BOOKING MANAGEMENT MODAL -->
+  <div class="modal-backdrop" id="ownerModal">
+    <div class="modal-sheet owner-sheet animate-slide-up">
+      <div class="sheet-header-line">
+        <div>
+          <span class="section-overline">CỔNG VẬN HÀNH HOMESTAY</span>
+          <h3 class="sheet-subheading">Quản Lý Đơn Đặt & Cấu Hình Telegram Bot</h3>
+        </div>
+        <button type="button" class="btn-close-sheet" onclick="closeOwnerModal()" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="owner-tabs-row">
+        <button class="owner-tab-item active" onclick="switchOwnerTab('config')"><i class="fa-brands fa-telegram"></i> Cài Đặt Telegram Bot Nhận Tin</button>
+        <button class="owner-tab-item" onclick="switchOwnerTab('history')"><i class="fa-solid fa-list-check"></i> Sổ Đơn Khách Đặt (<span id="bookingCountBadge">0</span>)</button>
+      </div>
+
+      <!-- TAB 1: TELEGRAM CONFIG -->
+      <div class="owner-pane active" id="paneConfig">
+        <div class="guide-box">
+          <h4><i class="fa-solid fa-circle-info"></i> Hướng Dẫn 30 Giây Nhận Tin Nhắn "Ting Ting" Trên Điện Thoại:</h4>
+          <ol>
+            <li>Mở Telegram, gõ tìm <strong>@BotFather</strong>, gửi lệnh <code>/newbot</code> để tạo bot và lấy <strong>Bot Token</strong>.</li>
+            <li>Gõ tìm <strong>@userinfobot</strong> trên Telegram, bấm Start để lấy số <strong>Id</strong> của bạn.</li>
+            <li>Dán vào 2 ô bên dưới và bấm <strong>"Lưu Cấu Hình"</strong> rồi <strong>"Gửi Tin Thử Nghiệm"</strong>. Điện thoại của bạn sẽ lập tức nhận được thông báo!</li>
+          </ol>
+        </div>
+
+        <div class="form-cell">
+          <label for="ownerTelegramToken">Telegram Bot Token:</label>
+          <input type="text" id="ownerTelegramToken" placeholder="Ví dụ: 7123456789:AAHxxxxx_xxxxxxxxxxxx">
+          <small class="hint-text">Mặc định web đang chạy chế độ mô phỏng trực tiếp cực kỳ mượt mà nếu bạn chưa nhập token riêng.</small>
+        </div>
+
+        <div class="form-cell">
+          <label for="ownerTelegramChatId">Telegram Chat ID (Cá nhân hoặc Nhóm quản lý):</label>
+          <input type="text" id="ownerTelegramChatId" placeholder="Ví dụ: 123456789 hoặc -100123456789">
+        </div>
+
+        <div class="pane-action-buttons">
+          <button type="button" class="btn-solid" id="btnSaveTelegramConfig">
+            <i class="fa-solid fa-floppy-disk"></i> Lưu Cấu Hình
+          </button>
+          <button type="button" class="btn-outline" id="btnTestTelegram">
+            <i class="fa-solid fa-paper-plane"></i> Gửi Tin Thử Nghiệm
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: BOOKING HISTORY -->
+      <div class="owner-pane" id="paneHistory">
+        <div class="history-top-bar">
+          <p>Danh sách các khách đã gửi form trên website (Được lưu trong trình duyệt của bạn):</p>
+          <button type="button" class="btn-clear-history" id="btnClearHistory">
+            <i class="fa-regular fa-trash-can"></i> Xóa danh sách
+          </button>
+        </div>
+
+        <div class="history-table-container">
+          <table class="history-table" id="bookingTable">
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Hạng phòng</th>
+                <th>Lịch trình</th>
+                <th>Tạm tính</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="bookingTableBody">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+          <div class="no-records-msg" id="noBookingsMsg">
+            <i class="fa-regular fa-calendar-xmark"></i>
+            <p>Chưa có đơn đặt phòng nào mới. Khi khách bấm gửi form trên web, đơn sẽ tự động hiển thị ở đây!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROOM PHOTO GALLERY MODAL -->
+  <div class="modal-backdrop" id="photoModal">
+    <div class="modal-sheet gallery-sheet animate-slide-up">
+      <div class="gallery-sheet-header">
+        <div>
+          <span class="section-overline">HÌNH ẢNH THỰC TẾ</span>
+          <h3 id="modalRoomTitle">Hình ảnh chi tiết</h3>
+        </div>
+        <button type="button" class="btn-close-sheet" onclick="closePhotoGallery()" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="gallery-main-view">
+        <img id="modalMainImg" src="" alt="Hình ảnh chi tiết gian phòng">
+      </div>
+
+      <div class="gallery-thumbs-row" id="modalThumbnails">
+        <!-- Thumbnails injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

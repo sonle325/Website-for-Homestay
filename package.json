@@ -1,0 +1,17 @@
+{
+  "name": "lal-angle-homestay-landing",
+  "version": "1.0.0",
+  "description": "Landing Page Đặt Phòng Trực Tiếp - Lal Angle Homestay",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "homestay",
+    "landing-page",
+    "booking",
+    "telegram-bot"
+  ],
+  "author": "Freelancer Pro",
+  "license": "MIT"
+}
