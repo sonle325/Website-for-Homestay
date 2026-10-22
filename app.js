@@ -9,6 +9,12 @@ const STORAGE_KEYS = {
   BOOKINGS_HISTORY: 'lal_angle_bookings_history'
 };
 
+// Cấu hình Telegram mặc định (Tự động gửi về điện thoại của bạn trên Vercel)
+const DEFAULT_CONFIG = {
+  TELEGRAM_TOKEN: '8954116585:AAGE1f--KiAaC91WAGOGBOJX3-aRhdhHkLM',
+  TELEGRAM_CHAT_ID: '6799585518'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initDateDefaults();
@@ -284,8 +290,8 @@ function markError(inputEl, isError) {
 }
 
 async function sendTelegramMessage(data) {
-  const token = localStorage.getItem(STORAGE_KEYS.TELEGRAM_TOKEN);
-  const chatId = localStorage.getItem(STORAGE_KEYS.TELEGRAM_CHAT_ID);
+  const token = localStorage.getItem(STORAGE_KEYS.TELEGRAM_TOKEN) || DEFAULT_CONFIG.TELEGRAM_TOKEN;
+  const chatId = localStorage.getItem(STORAGE_KEYS.TELEGRAM_CHAT_ID) || DEFAULT_CONFIG.TELEGRAM_CHAT_ID;
 
   const text = 
     `🔔 *CÓ KHÁCH ĐẶT PHÒNG MỚI · LAL ANGLE HOMESTAY*\n` +
@@ -302,6 +308,8 @@ async function sendTelegramMessage(data) {
     `━━━━━━━━━━━━━━━━━━━━\n` +
     `👉 Bấm gọi chốt ngay: tel:${data.phone.replace(/[^0-9]/g, '')}`;
 
+  playChime();
+
   if (token && chatId) {
     try {
       await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -316,9 +324,6 @@ async function sendTelegramMessage(data) {
     } catch (e) {
       console.warn('Telegram send error', e);
     }
-  } else {
-    // Âm thanh thông báo nhẹ
-    playChime();
   }
 }
 
@@ -372,8 +377,8 @@ function initOwnerSettings() {
   const tokenInput = document.getElementById('ownerTelegramToken');
   const chatIdInput = document.getElementById('ownerTelegramChatId');
 
-  if (tokenInput) tokenInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_TOKEN) || '';
-  if (chatIdInput) chatIdInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_CHAT_ID) || '';
+  if (tokenInput) tokenInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_TOKEN) || DEFAULT_CONFIG.TELEGRAM_TOKEN;
+  if (chatIdInput) chatIdInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_CHAT_ID) || DEFAULT_CONFIG.TELEGRAM_CHAT_ID;
 
   renderHistory();
 
