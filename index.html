@@ -19,8 +19,8 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Stylesheet (Modular) -->
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
 
@@ -353,6 +353,8 @@
           </div>
 
           <form id="bookingForm" class="clean-form" novalidate>
+            <!-- Bẫy bot ngầm (Honeypot Anti-Bot Security Field) -->
+            <input type="text" id="website_hp_check" name="website_hp_check" class="hp-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
             
             <div class="form-group">
               <label for="guestName">Họ và tên của bạn <span class="required">*</span></label>
@@ -564,8 +566,9 @@
       </div>
 
       <div class="owner-tabs">
-        <button class="tab-btn active" onclick="switchOwnerTab('config')">Cài Bot Telegram</button>
-        <button class="tab-btn" onclick="switchOwnerTab('history')">Lịch Sử Đơn (<span id="bookingCountBadge">0</span>)</button>
+        <button class="tab-btn active" data-tab="config" onclick="switchOwnerTab('config')"><i class="fa-brands fa-telegram"></i> Cài Bot Telegram</button>
+        <button class="tab-btn" data-tab="history" onclick="switchOwnerTab('history')"><i class="fa-solid fa-list-check"></i> Lịch Sử Đơn (<span id="bookingCountBadge">0</span>)</button>
+        <button class="tab-btn" data-tab="rooms" onclick="switchOwnerTab('rooms')"><i class="fa-solid fa-bed"></i> Trạng Thái Phòng</button>
       </div>
 
       <div class="tab-content active" id="paneConfig">
@@ -611,10 +614,18 @@
         <button type="button" class="btn-clear" id="btnClearHistory">Xóa danh sách</button>
       </div>
 
+      <!-- TAB 3: QUẢN LÝ SỐ LƯỢNG & TRẠNG THÁI PHÒNG (CÒN / HẾT) -->
+      <div class="tab-content" id="paneRooms">
+        <p class="tab-sub-text">Bật hoặc Tắt trạng thái để hiển thị cho khách biết phòng còn hay đã kín lịch:</p>
+        <div class="room-status-list" id="roomStatusList">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="app.js"></script>
+  <!-- JavaScript (ES Modular Source Architecture) -->
+  <script type="module" src="src/js/main.js"></script>
 </body>
 </html>

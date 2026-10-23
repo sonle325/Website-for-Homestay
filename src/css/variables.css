@@ -1,0 +1,43 @@
+/* ==========================================================================
+   LAL ANGLE HOMESTAY · DESIGN TOKENS & VARIABLES
+   ========================================================================== */
+
+:root {
+  --c-dark: #1f2722;
+  --c-dark-soft: #2c3630;
+  --c-clay: #a65b35;
+  --c-clay-hover: #8f4b28;
+  --c-clay-soft: #faeee7;
+  
+  --c-bg: #fcfbf8;
+  --c-bg-card: #ffffff;
+  --c-bg-muted: #f4efe8;
+  --c-border: #e8e2d8;
+  
+  --c-text: #242c27;
+  --c-text-muted: #66726a;
+  --c-text-light: #8e9a92;
+
+  --c-success: #2e7d32;
+  --c-success-bg: #e8f5e9;
+  --c-danger: #c62828;
+  --c-danger-bg: #ffebee;
+  --c-warning: #ef6c00;
+  --c-warning-bg: #fff3e0;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+  
+  --shadow-sm: 0 4px 12px rgba(31, 39, 34, 0.05);
+  --shadow-md: 0 10px 30px rgba(31, 39, 34, 0.08);
+  --shadow-lg: 0 20px 45px rgba(31, 39, 34, 0.12);
+  
+  --tr-fast: 0.15s ease;
+  --tr: 0.2s ease;
+  --tr-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
