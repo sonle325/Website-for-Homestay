@@ -573,25 +573,14 @@
 
       <div class="tab-content active" id="paneConfig">
         <div class="guide-note">
-          <strong>Cách nhận thông báo Ting Ting về điện thoại:</strong>
-          <p>1. Chat với <strong>@BotFather</strong> trên Telegram để lấy Bot Token.</p>
-          <p>2. Chat với <strong>@userinfobot</strong> để lấy Chat ID của bạn.</p>
-          <p>3. Dán vào 2 ô dưới và bấm "Lưu". Khách đặt phòng sẽ báo về máy bạn ngay!</p>
+          <strong><i class="fa-solid fa-shield-halved"></i> Bảo Mật Cấp Server (Serverless API):</strong>
+          <p>Hệ thống đã nâng cấp toàn bộ luồng gửi thông báo Telegram lên <strong>Vercel Serverless Function</strong>. Token và Chat ID của bạn được mã hóa an toàn ở phía Server, khách vào web hoàn toàn không thể xem hoặc đánh cắp token.</p>
         </div>
 
-        <div class="form-group">
-          <label for="ownerTelegramToken">Telegram Bot Token:</label>
-          <input type="text" id="ownerTelegramToken" placeholder="Ví dụ: 7123456789:AAHxxxxx_xxxxxxxxxxxx">
-        </div>
-
-        <div class="form-group">
-          <label for="ownerTelegramChatId">Telegram Chat ID của bạn:</label>
-          <input type="text" id="ownerTelegramChatId" placeholder="Ví dụ: 123456789">
-        </div>
-
-        <div class="owner-actions">
-          <button type="button" class="btn-primary" id="btnSaveTelegramConfig">Lưu Cấu Hình</button>
-          <button type="button" class="btn-secondary" id="btnTestTelegram">Gửi Tin Thử Nghiệm</button>
+        <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px;margin-bottom:14px;">
+          <h4 style="font-size:0.9rem;margin-bottom:6px;color:var(--c-dark);"><i class="fa-solid fa-key"></i> Đổi Mã PIN Quản Trị</h4>
+          <p style="font-size:0.8rem;color:var(--c-text-muted);margin-bottom:10px;">Mã PIN mặc định là <code>1234</code>. Bạn có thể đổi mã PIN để bảo vệ cổng quản trị riêng tư.</p>
+          <button type="button" class="btn-primary" id="btnChangeAdminPin" style="padding:8px 16px;font-size:0.82rem;">Đổi Mã PIN Mới</button>
         </div>
       </div>
 

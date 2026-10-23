@@ -1,84 +1,60 @@
 /**
  * LAL ANGLE HOMESTAY · OWNER ADMIN & MANAGEMENT MODULE
- * - Cài đặt cấu hình Bot Telegram
- * - Xem & quản lý sổ đơn khách đặt phòng
- * - Bật / Tắt trạng thái & số lượng phòng (Còn phòng / Đã kín lịch)
+ * - Bảo vệ bằng mã PIN bảo mật (Tránh khách lạ tò mò mở cổng quản trị)
+ * - Quản lý số lượng & trạng thái phòng (Còn phòng / Đã kín lịch)
+ * - Hướng dẫn biến môi trường Vercel & Quản lý lịch sử đơn
  */
 
-import { STORAGE_KEYS, DEFAULT_CONFIG } from './config.js';
+import { STORAGE_KEYS, DEFAULT_ADMIN_PIN } from './config.js';
 import { getRoomsStatus, toggleRoomStatus, syncRoomsUI } from './rooms.js';
-import { testTelegramConnection } from './telegram.js';
 import { escapeHtml } from './security.js';
 
 export function initOwnerSettings() {
   const openBtn = document.getElementById('btnOpenOwnerSettings');
   const modal = document.getElementById('ownerModal');
-  const saveBtn = document.getElementById('btnSaveTelegramConfig');
-  const testBtn = document.getElementById('btnTestTelegram');
   const clearBtn = document.getElementById('btnClearHistory');
+  const closeBtn = document.getElementById('btnCloseOwnerModal');
 
-  const tokenInput = document.getElementById('ownerTelegramToken');
-  const chatIdInput = document.getElementById('ownerTelegramChatId');
-
-  // Khởi tạo giá trị ban đầu cho Token và Chat ID
-  if (tokenInput) {
-    tokenInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_TOKEN) || DEFAULT_CONFIG.TELEGRAM_TOKEN;
-  }
-  if (chatIdInput) {
-    chatIdInput.value = localStorage.getItem(STORAGE_KEYS.TELEGRAM_CHAT_ID) || DEFAULT_CONFIG.TELEGRAM_CHAT_ID;
-  }
-
-  // Mở Modal Quản Trị
+  // Mở Modal Quản Trị với xác thực mã PIN
   if (openBtn && modal) {
-    openBtn.addEventListener('click', () => {
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const isAuthenticated = sessionStorage.getItem(STORAGE_KEYS.ADMIN_SESSION) === 'true';
+      if (!isAuthenticated) {
+        const inputPin = prompt('🔐 CỔNG QUẢN TRỊ LAL ANGLE HOMESTAY\nVui lòng nhập mã PIN quản lý để truy cập (Mặc định: 1234):');
+        if (!inputPin) return;
+
+        const storedPin = localStorage.getItem('lal_angle_admin_pin') || DEFAULT_ADMIN_PIN;
+        if (inputPin.trim() !== storedPin) {
+          alert('❌ Mã PIN không chính xác! Quyền truy cập bị từ chối.');
+          return;
+        }
+
+        // Lưu phiên đăng nhập trong tab hiện tại
+        sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, 'true');
+      }
+
       renderHistory();
       renderRoomStatusTab();
       modal.classList.add('active');
     });
   }
 
-  // Lưu cấu hình Telegram
-  if (saveBtn) {
-    saveBtn.addEventListener('click', () => {
-      const t = tokenInput ? tokenInput.value.trim() : '';
-      const c = chatIdInput ? chatIdInput.value.trim() : '';
-
-      if (t) localStorage.setItem(STORAGE_KEYS.TELEGRAM_TOKEN, t);
-      else localStorage.removeItem(STORAGE_KEYS.TELEGRAM_TOKEN);
-
-      if (c) localStorage.setItem(STORAGE_KEYS.TELEGRAM_CHAT_ID, c);
-      else localStorage.removeItem(STORAGE_KEYS.TELEGRAM_CHAT_ID);
-
-      alert('Đã lưu cấu hình Bot Telegram thành công!');
-    });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeOwnerModal);
   }
 
-  // Gửi tin thử nghiệm
-  if (testBtn) {
-    testBtn.addEventListener('click', async () => {
-      const t = tokenInput ? tokenInput.value.trim() : '';
-      const c = chatIdInput ? chatIdInput.value.trim() : '';
-
-      if (!t || !c) {
-        alert('Vui lòng nhập Bot Token và Chat ID để thử nghiệm!');
-        return;
-      }
-
-      testBtn.disabled = true;
-      testBtn.textContent = 'Đang gửi...';
-
-      try {
-        const data = await testTelegramConnection(t, c);
-        if (data.ok) {
-          alert('Tin nhắn thử nghiệm đã gửi thành công tới Telegram của bạn!');
-        } else {
-          alert('Lỗi Telegram: ' + (data.description || 'Sai token hoặc chat ID'));
-        }
-      } catch (err) {
-        alert('Lỗi kết nối: ' + err.message);
-      } finally {
-        testBtn.disabled = false;
-        testBtn.textContent = 'Gửi Tin Thử Nghiệm';
+  // Đổi mã PIN quản lý
+  const changePinBtn = document.getElementById('btnChangeAdminPin');
+  if (changePinBtn) {
+    changePinBtn.addEventListener('click', () => {
+      const newPin = prompt('Nhập mã PIN quản lý mới (4 - 6 số):');
+      if (newPin && newPin.trim().length >= 4) {
+        localStorage.setItem('lal_angle_admin_pin', newPin.trim());
+        alert('Đã cập nhật mã PIN quản lý thành công!');
+      } else if (newPin !== null) {
+        alert('Mã PIN phải có ít nhất 4 ký tự.');
       }
     });
   }
@@ -86,15 +62,25 @@ export function initOwnerSettings() {
   // Xóa lịch sử đơn
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ danh sách đơn đặt phòng đã lưu không?')) {
+      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ danh sách đơn đặt phòng đã lưu trên thiết bị này không?')) {
         localStorage.removeItem(STORAGE_KEYS.BOOKINGS_HISTORY);
         renderHistory();
       }
     });
   }
 
+  // Đăng ký event delegation cho các tab trong Owner modal
+  const tabsContainer = document.querySelector('.owner-tabs');
+  if (tabsContainer) {
+    tabsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (btn && btn.dataset.tab) {
+        switchOwnerTab(btn.dataset.tab);
+      }
+    });
+  }
+
   renderHistory();
-  renderRoomStatusTab();
 }
 
 export function closeOwnerModal() {
@@ -149,19 +135,26 @@ export function renderRoomStatusTab() {
             ${isAvailable ? 'Còn phòng' : 'Đã kín lịch'}
           </span>
           <label class="switch-control" title="Nhấn để đổi trạng thái">
-            <input type="checkbox" data-room-id="${room.id}" ${isAvailable ? 'checked' : ''} onchange="window.handleRoomToggle('${room.id}')">
+            <input type="checkbox" data-room-id="${room.id}" class="room-status-checkbox" ${isAvailable ? 'checked' : ''}>
             <span class="switch-slider"></span>
           </label>
         </div>
       </div>
     `;
   }).join('');
-}
 
-export function handleRoomToggle(roomId) {
-  toggleRoomStatus(roomId);
-  renderRoomStatusTab();
-  syncRoomsUI();
+  // Gắn event listener trực tiếp (thay thế inline onchange)
+  const checkboxes = container.querySelectorAll('.room-status-checkbox');
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const roomId = e.target.dataset.roomId;
+      if (roomId) {
+        toggleRoomStatus(roomId);
+        renderRoomStatusTab();
+        syncRoomsUI();
+      }
+    });
+  });
 }
 
 /**

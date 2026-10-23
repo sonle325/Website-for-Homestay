@@ -1,36 +1,16 @@
 /**
- * LAL ANGLE HOMESTAY · CONFIGURATION & CONSTANTS
- * Modular Source Architecture
+ * LAL ANGLE HOMESTAY · CLIENT CONFIGURATION & CONSTANTS
+ * Secure Architecture: Không chứa Token hoặc Secret trong Frontend!
  */
 
 export const STORAGE_KEYS = {
-  TELEGRAM_TOKEN: 'lal_angle_tg_token',
-  TELEGRAM_CHAT_ID: 'lal_angle_tg_chat_id',
   BOOKINGS_HISTORY: 'lal_angle_bookings_history',
   ROOMS_STATUS: 'lal_angle_rooms_status',
-  RATE_LIMIT_TIMESTAMP: 'lal_angle_rate_limit_ts',
-  RATE_LIMIT_HISTORY: 'lal_angle_rate_limit_history',
-  IDEMPOTENCY_STORE: 'lal_angle_idempotency_store'
+  ADMIN_SESSION: 'lal_angle_admin_session'
 };
 
-// Cấu hình Telegram mặc định (Encoded token chống quét tự động của GitHub)
-export const DEFAULT_CONFIG = {
-  TELEGRAM_TOKEN: (typeof atob === 'function') 
-    ? atob('ODk1NDExNjU4NTpBQUdFMWYtLUtpQWFDOTFXQUdPR0JPSlgzLWFSaGRoSGtMTQ==') 
-    : '',
-  TELEGRAM_CHAT_ID: '6799585518'
-};
-
-// Cấu hình bảo mật chống Spam & Chống Hack
-export const SECURITY_CONFIG = {
-  COOLDOWN_SECONDS: 15,          // Giãn cách tối thiểu giữa 2 lần bấm gửi liên tiếp
-  MAX_SUBMISSIONS_WINDOW: 3,     // Tối đa 3 đơn trong 5 phút trên 1 thiết bị
-  WINDOW_TIME_MS: 5 * 60 * 1000, // Khung thời gian trượt: 5 phút
-  MIN_FORM_FILL_TIME_MS: 2000,   // Dưới 2 giây điền form -> nghi vấn auto bot
-  MAX_NAME_LENGTH: 60,
-  MAX_PHONE_LENGTH: 15,
-  MAX_NOTES_LENGTH: 300
-};
+// Cấu hình mã PIN bảo vệ trang Quản lý Homestay (Chủ homestay tự đổi được)
+export const DEFAULT_ADMIN_PIN = '1234';
 
 // Danh sách 4 hạng phòng mặc định của Lal Angle Homestay
 export const INITIAL_ROOMS = [
@@ -42,7 +22,7 @@ export const INITIAL_ROOMS = [
     weekendPrice: 1450000,
     badgeText: 'Được yêu thích nhất',
     badgeClass: '',
-    status: 'AVAILABLE' // 'AVAILABLE' | 'SOLDOUT'
+    status: 'AVAILABLE'
   },
   {
     id: 'room-2',

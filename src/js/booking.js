@@ -1,25 +1,22 @@
 /**
- * LAL ANGLE HOMESTAY · BOOKING CORE LOGIC & ANTI-SPAM PIPELINE
- * - Quản lý ngày Check-in, Check-out & Tính giá tự động
- * - Kiểm tra bảo mật đa lớp: Rate Limit, Idempotency Key, Honeypot, Time-Trap, Input Sanitization
- * - Gửi đơn về Telegram & Lưu trữ lịch sử cục bộ
+ * LAL ANGLE HOMESTAY · SECURE BOOKING PIPELINE
+ * - Xác thực ngày đến, ngày đi chặt chẽ (Check-out > Check-in >= Hôm nay)
+ * - Gửi dữ liệu tới Serverless API (/api/booking) để tính giá và gửi Telegram an toàn
+ * - Xử lý phản hồi lỗi trung thực: Chỉ báo thành công khi server xác nhận ok
+ * - Anti-Spam & Anti-Bot: Honeypot, Time-Trap, Client Debounce
  */
 
 import { 
-  checkRateLimit, 
-  recordSuccessfulSubmission, 
-  generateIdempotencyKey, 
-  isIdempotentDuplicate, 
-  saveIdempotencyRecord,
   verifyHoneypot, 
   verifyTimeTrap, 
   recordFormInteraction,
   resetTimeTrap,
   sanitizeInput, 
-  validateVietnamesePhone 
+  validateVietnamesePhone,
+  generateIdempotencyKey
 } from './security.js';
 import { getRoomsStatus } from './rooms.js';
-import { sendTelegramNotification } from './telegram.js';
+import { submitBookingToApi } from './telegram.js';
 import { saveLocalBooking } from './admin.js';
 
 let selectedPricePerNight = 1250000;
@@ -43,7 +40,7 @@ export function formatVND(amount) {
 }
 
 /* ==========================================================================
-   1. KHỞI TẠO NGÀY MẶC ĐỊNH
+   1. KHỞI TẠO NGÀY MẶC ĐỊNH & KIỂM SOÁT TÍNH HỢP LỆ
    ========================================================================== */
 export function initDateDefaults() {
   const today = new Date();
@@ -54,18 +51,25 @@ export function initDateDefaults() {
   const checkOut = document.getElementById('checkOutDate');
 
   if (checkIn && checkOut) {
-    checkIn.min = formatDateInput(today);
-    checkIn.value = formatDateInput(today);
+    const todayStr = formatDateInput(today);
+    const tomorrowStr = formatDateInput(tomorrow);
 
-    checkOut.min = formatDateInput(tomorrow);
-    checkOut.value = formatDateInput(tomorrow);
+    checkIn.min = todayStr;
+    checkIn.value = todayStr;
+
+    checkOut.min = tomorrowStr;
+    checkOut.value = tomorrowStr;
 
     checkIn.addEventListener('change', () => {
-      const nextDay = new Date(checkIn.value);
+      if (!checkIn.value) return;
+      const dIn = new Date(checkIn.value);
+      const nextDay = new Date(dIn);
       nextDay.setDate(nextDay.getDate() + 1);
-      checkOut.min = formatDateInput(nextDay);
-      if (new Date(checkOut.value) <= new Date(checkIn.value)) {
-        checkOut.value = formatDateInput(nextDay);
+      const nextDayStr = formatDateInput(nextDay);
+
+      checkOut.min = nextDayStr;
+      if (new Date(checkOut.value) <= dIn) {
+        checkOut.value = nextDayStr;
       }
       updatePrice();
     });
@@ -114,7 +118,6 @@ export function initQuickSearch() {
       if (qCheckIn && mainCheckIn) mainCheckIn.value = qCheckIn.value;
       if (qCheckOut && mainCheckOut) mainCheckOut.value = qCheckOut.value;
       if (qGuests && mainGuests) {
-        // Map số khách
         const val = qGuests.value;
         if (val === '2') mainGuests.value = '2 người lớn';
         else if (val === '4') mainGuests.value = '3 - 4 người lớn';
@@ -132,10 +135,9 @@ export function initQuickSearch() {
 }
 
 /* ==========================================================================
-   3. CHỌN PHÒNG & TÍNH TIỀN TỰ ĐỘNG
+   3. CHỌN PHÒNG & TÍNH TIỀN TẠM TÍNH TRÊN CLIENT
    ========================================================================== */
 export function chooseRoom(roomVal, pricePerNight) {
-  // Kiểm tra phòng có đang bị khóa (hết phòng) hay không
   const rooms = getRoomsStatus();
   const matched = rooms.find(r => r.selectValue === roomVal);
   if (matched && matched.status === 'SOLDOUT') {
@@ -190,16 +192,14 @@ export function updatePrice() {
 }
 
 /* ==========================================================================
-   4. PIPELINE BẢO MẬT & SUBMIT FORM
+   4. PIPELINE XÁC THỰC VÀ GỬI ĐƠN AN TOÀN
    ========================================================================== */
 export function initReservationForm() {
   const form = document.getElementById('bookingForm');
   if (!form) return;
 
-  // Lắng nghe tương tác đầu tiên để kích hoạt Time-Trap
   form.addEventListener('focusin', recordFormInteraction, { once: true });
   form.addEventListener('click', recordFormInteraction, { once: true });
-
   form.addEventListener('submit', handleFormSubmit);
 }
 
@@ -221,24 +221,24 @@ async function handleFormSubmit(e) {
 
   // 1. Kiểm tra Honeypot Trap
   if (!verifyHoneypot()) {
-    console.warn('[SECURITY] Bot trap detected. Request cancelled.');
+    console.warn('[SECURITY] Bot trap detected. Request ignored.');
     return;
   }
 
-  // 2. Kiểm tra Time-Trap (Chống bot gửi dưới 2s)
+  // 2. Kiểm tra Time-Trap
   if (!verifyTimeTrap()) {
     alert('Thao tác quá nhanh. Vui lòng kiểm tra lại thông tin trước khi gửi.');
     return;
   }
 
-  // 3. Validation dữ liệu đầu vào & Anti-XSS Sanitization
+  // 3. Validation dữ liệu phía Client
   const rawName = sanitizeInput(nameInput?.value || '', 60);
   const rawPhone = sanitizeInput(phoneInput?.value || '', 15);
   const rawNotes = sanitizeInput(notesInput?.value || '', 300);
 
   let hasError = false;
 
-  // Tên
+  // Họ tên
   if (!rawName || rawName.length < 2) {
     setFieldError(nameInput, true);
     hasError = true;
@@ -259,7 +259,6 @@ async function handleFormSubmit(e) {
     setFieldError(roomInput, true);
     hasError = true;
   } else {
-    // Kiểm tra xem phòng có bị khoá kín lịch hay không
     const rooms = getRoomsStatus();
     const matched = rooms.find(r => r.selectValue === roomInput.value);
     if (matched && matched.status === 'SOLDOUT') {
@@ -270,66 +269,86 @@ async function handleFormSubmit(e) {
     setFieldError(roomInput, false);
   }
 
-  if (hasError) return;
+  // Ngày đến và Ngày đi (Validation chặt chẽ chống ngày âm / ngày trong quá khứ)
+  const dIn = checkInInput?.value ? new Date(checkInInput.value) : null;
+  const dOut = checkOutInput?.value ? new Date(checkOutInput.value) : null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  // 4. Rate Limiting Check
-  const rateLimitStatus = checkRateLimit();
-  if (!rateLimitStatus.allowed) {
-    alert(rateLimitStatus.message);
-    return;
+  if (!dIn || isNaN(dIn.getTime()) || dIn < today) {
+    setFieldError(checkInInput, true);
+    hasError = true;
+  } else {
+    setFieldError(checkInInput, false);
   }
 
-  // Chuẩn bị dữ liệu
-  const checkInFormatted = formatDateVN(checkInInput?.value);
-  const checkOutFormatted = formatDateVN(checkOutInput?.value);
-  const totalMoneyText = document.getElementById('calcDirectTotal')?.textContent || '1.250.000đ';
-  const nightsText = document.getElementById('calcNights')?.textContent || '1 đêm';
+  if (!dOut || isNaN(dOut.getTime()) || !dIn || dOut <= dIn) {
+    setFieldError(checkOutInput, true);
+    hasError = true;
+  } else {
+    setFieldError(checkOutInput, false);
+  }
 
-  const bookingData = {
+  if (hasError) return;
+
+  // 4. Tạo Idempotency Key & Dữ liệu gửi đi
+  const hpEl = document.getElementById('website_hp_check');
+  const idempotency = generateIdempotencyKey({
+    phone: rawPhone,
+    room: roomInput.value,
+    checkIn: checkInInput.value,
+    checkOut: checkOutInput.value
+  });
+
+  const bookingPayload = {
     name: rawName,
     phone: rawPhone,
     room: roomInput.value,
-    checkIn: checkInFormatted,
-    checkOut: checkOutFormatted,
-    nights: nightsText,
+    checkIn: checkInInput.value,
+    checkOut: checkOutInput.value,
     guests: guestsInput?.value || '2 người lớn',
-    extra: extraInput?.value || 'Không có',
+    extra: extraInput?.value || 'Chỉ phòng & Bữa sáng tặng kèm',
     notes: rawNotes || 'Không có',
-    total: totalMoneyText,
-    time: new Date().toLocaleString('vi-VN', { hour12: false })
+    website_hp_check: hpEl ? hpEl.value : '',
+    form_fill_time: Date.now() - (window._formStartTime || Date.now() - 3000),
+    idempotencyKey: idempotency.key
   };
 
-  // 5. Idempotency Key Check (Chống trùng lặp đơn khi bấm đúp)
-  const idemp = generateIdempotencyKey(bookingData);
-  bookingData.idempotencyKey = idemp.key;
-
-  const previousRecord = isIdempotentDuplicate(idemp.signature);
-  if (previousRecord) {
-    // Đã từng gửi đơn giống hệt trong 15 phút qua -> Hiển thị lại popup thành công, không bắn tin trùng lặp
-    console.info('[IDEMPOTENCY] Reusing previous idempotent submission');
-    showSuccessPopup(previousRecord);
-    return;
-  }
-
-  // 6. Khoá nút submit (Anti-Double Click)
+  // 5. Khóa nút submit chống bấm đúp
   if (btnSubmit) btnSubmit.disabled = true;
   if (btnText) btnText.classList.add('d-none');
   if (btnLoading) btnLoading.classList.remove('d-none');
 
   try {
-    // 7. Gửi thông báo về Telegram
-    await sendTelegramNotification(bookingData);
+    // 6. Gửi tới Serverless API (/api/booking)
+    const apiResult = await submitBookingToApi(bookingPayload);
 
-    // 8. Lưu vào lịch sử cục bộ & Idempotency Store
-    saveLocalBooking(bookingData);
-    saveIdempotencyRecord(idemp.signature, bookingData);
-    recordSuccessfulSubmission();
+    // 7. Xử lý phản hồi từ Server (Chỉ báo thành công khi server xác nhận OK)
+    if (!apiResult.ok) {
+      const errMsg = apiResult.data?.error || 'Không thể gửi đơn đặt phòng lúc này.';
+      alert(`⚠️ ${errMsg}\nBạn vui lòng gọi trực tiếp Hotline 0938 126 899 (Ms. An) để được giữ phòng ngay nhé!`);
+      return;
+    }
 
-    // 9. Reset Time Trap
+    // 8. Lưu lịch sử cục bộ với thông tin chuẩn từ server
+    const confirmedRecord = {
+      name: rawName,
+      phone: rawPhone,
+      room: apiResult.data?.roomName || roomInput.value,
+      checkIn: formatDateVN(checkInInput.value),
+      checkOut: formatDateVN(checkOutInput.value),
+      nights: apiResult.data?.nights || '1 đêm',
+      guests: bookingPayload.guests,
+      extra: bookingPayload.extra,
+      total: apiResult.data?.total || '1.250.000đ',
+      time: new Date().toLocaleString('vi-VN', { hour12: false })
+    };
+
+    saveLocalBooking(confirmedRecord);
     resetTimeTrap();
 
-    // 10. Hiển thị Popup thành công
-    showSuccessPopup(bookingData);
+    // 9. Hiển thị Popup xác nhận thành công
+    showSuccessPopup(confirmedRecord, apiResult.data?.bookingId);
 
     // Reset Form
     const formEl = document.getElementById('bookingForm');
@@ -338,8 +357,8 @@ async function handleFormSubmit(e) {
     updatePrice();
 
   } catch (err) {
-    console.error('Lỗi khi gửi đơn:', err);
-    alert('Có lỗi nhỏ xảy ra khi gửi thông báo. Quản lý sẽ chủ động liên hệ bạn qua SĐT/Zalo sớm nhất!');
+    console.error('[BOOKING PIPELINE ERROR]', err);
+    alert('Có sự cố kết nối tới hệ thống. Bạn vui lòng liên hệ hotline 0938 126 899 để chốt phòng tức thì!');
   } finally {
     if (btnSubmit) btnSubmit.disabled = false;
     if (btnText) btnText.classList.remove('d-none');
@@ -355,18 +374,18 @@ function setFieldError(inputEl, isError) {
   else group.classList.remove('has-error');
 }
 
-export function showSuccessPopup(data) {
+export function showSuccessPopup(data, bookingId = '') {
   const modal = document.getElementById('successModal');
   const summaryBox = document.getElementById('modalBookingSummary');
 
   if (summaryBox) {
     summaryBox.innerHTML = `
+      ${bookingId ? `<div style="font-size:0.78rem;color:#718096;margin-bottom:6px;">Mã đơn: <strong>${bookingId}</strong></div>` : ''}
       <strong>Khách đặt:</strong> ${data.name} (${data.phone})<br>
-      <strong>Phòng:</strong> ${data.room}<br>
+      <strong>Gian phòng:</strong> ${data.room}<br>
       <strong>Lịch trình:</strong> ${data.checkIn} đến ${data.checkOut} (${data.nights})<br>
       <strong>Số khách:</strong> ${data.guests}<br>
-      <strong>Dịch vụ thêm:</strong> ${data.extra}<br>
-      <strong>Tạm tính:</strong> <span style="color:#a65b35;font-weight:700;">${data.total}</span>
+      <strong>Tổng tiền xác nhận:</strong> <span style="color:#a65b35;font-weight:700;">${data.total}</span>
     `;
   }
 
