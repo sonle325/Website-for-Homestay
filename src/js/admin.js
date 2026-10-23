@@ -149,12 +149,16 @@ export function renderRoomStatusTab() {
     cb.addEventListener('change', (e) => {
       const roomId = e.target.dataset.roomId;
       if (roomId) {
-        toggleRoomStatus(roomId);
-        renderRoomStatusTab();
-        syncRoomsUI();
+        handleRoomToggle(roomId);
       }
     });
   });
+}
+
+export function handleRoomToggle(roomId) {
+  toggleRoomStatus(roomId);
+  renderRoomStatusTab();
+  syncRoomsUI();
 }
 
 /**
