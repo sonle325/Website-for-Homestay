@@ -6,7 +6,21 @@
 export const STORAGE_KEYS = {
   BOOKINGS_HISTORY: 'lal_angle_bookings_history',
   ROOMS_STATUS: 'lal_angle_rooms_status',
-  ADMIN_SESSION: 'lal_angle_admin_session'
+  ADMIN_SESSION: 'lal_angle_admin_session',
+  RATE_LIMIT_TIMESTAMP: 'lal_angle_rate_limit_ts',
+  RATE_LIMIT_HISTORY: 'lal_angle_rate_limit_history',
+  IDEMPOTENCY_STORE: 'lal_angle_idempotency_store'
+};
+
+// Cấu hình bảo mật chống Spam & Rate Limiting
+export const SECURITY_CONFIG = {
+  COOLDOWN_SECONDS: 15,
+  MAX_SUBMISSIONS_WINDOW: 3,
+  WINDOW_TIME_MS: 5 * 60 * 1000,
+  MIN_FORM_FILL_TIME_MS: 1500,
+  MAX_NAME_LENGTH: 60,
+  MAX_PHONE_LENGTH: 15,
+  MAX_NOTES_LENGTH: 300
 };
 
 // Cấu hình mã PIN bảo vệ trang Quản lý Homestay (Chủ homestay tự đổi được)

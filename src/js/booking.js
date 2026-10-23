@@ -83,10 +83,34 @@ export function initDateDefaults() {
 /* ==========================================================================
    2. KHUNG TÌM NHANH TRÊN HERO BANNER
    ========================================================================== */
-export function initQuickSearch() {
+export function handleQuickSearch() {
   const qCheckIn = document.getElementById('quickCheckIn');
   const qCheckOut = document.getElementById('quickCheckOut');
   const qGuests = document.getElementById('quickGuests');
+  const mainCheckIn = document.getElementById('checkInDate');
+  const mainCheckOut = document.getElementById('checkOutDate');
+  const mainGuests = document.getElementById('guestCount');
+
+  if (qCheckIn && mainCheckIn && qCheckIn.value) mainCheckIn.value = qCheckIn.value;
+  if (qCheckOut && mainCheckOut && qCheckOut.value) mainCheckOut.value = qCheckOut.value;
+  if (qGuests && mainGuests) {
+    const val = qGuests.value;
+    if (val === '2') mainGuests.value = '2 người lớn';
+    else if (val === '4') mainGuests.value = '3 - 4 người lớn';
+    else if (val === '6') mainGuests.value = '5 - 6 người lớn';
+    else if (val === '12') mainGuests.value = 'Đoàn trên 8 người';
+  }
+
+  const target = document.getElementById('rooms') || document.getElementById('booking');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+  updatePrice();
+}
+
+export function initQuickSearch() {
+  const qCheckIn = document.getElementById('quickCheckIn');
+  const qCheckOut = document.getElementById('quickCheckOut');
   const btnQuickSearch = document.getElementById('btnQuickSearch');
 
   if (qCheckIn && qCheckOut) {
@@ -110,27 +134,7 @@ export function initQuickSearch() {
   }
 
   if (btnQuickSearch) {
-    btnQuickSearch.addEventListener('click', () => {
-      const mainCheckIn = document.getElementById('checkInDate');
-      const mainCheckOut = document.getElementById('checkOutDate');
-      const mainGuests = document.getElementById('guestCount');
-
-      if (qCheckIn && mainCheckIn) mainCheckIn.value = qCheckIn.value;
-      if (qCheckOut && mainCheckOut) mainCheckOut.value = qCheckOut.value;
-      if (qGuests && mainGuests) {
-        const val = qGuests.value;
-        if (val === '2') mainGuests.value = '2 người lớn';
-        else if (val === '4') mainGuests.value = '3 - 4 người lớn';
-        else if (val === '6') mainGuests.value = '5 - 6 người lớn';
-        else if (val === '12') mainGuests.value = 'Đoàn trên 8 người';
-      }
-
-      const target = document.getElementById('rooms') || document.getElementById('booking');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-      updatePrice();
-    });
+    btnQuickSearch.addEventListener('click', handleQuickSearch);
   }
 }
 

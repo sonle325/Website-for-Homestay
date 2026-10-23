@@ -3,7 +3,7 @@
  * Modular Source Architecture
  */
 
-import { initDateDefaults, initQuickSearch, initCostCalculator, initReservationForm, chooseRoom, closeSuccessModal } from './booking.js';
+import { initDateDefaults, initQuickSearch, handleQuickSearch, initCostCalculator, initReservationForm, chooseRoom, closeSuccessModal } from './booking.js';
 import { syncRoomsUI } from './rooms.js';
 import { initOwnerSettings, closeOwnerModal, switchOwnerTab, handleRoomToggle } from './admin.js';
 
@@ -13,6 +13,7 @@ window.closeSuccessModal = closeSuccessModal;
 window.closeOwnerModal = closeOwnerModal;
 window.switchOwnerTab = switchOwnerTab;
 window.handleRoomToggle = handleRoomToggle;
+window.handleQuickSearch = handleQuickSearch;
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
